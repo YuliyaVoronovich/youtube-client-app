@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Video } from '../../../models/search-item.models';
 
 @Component({
   selector: 'app-search-item',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
   templateUrl: './search-item.component.html',
   styleUrl: './search-item.component.scss',
 })
-export class SearchItemComponent {}
+export class SearchItemComponent {
+  @Input() video!: Video;
+}
