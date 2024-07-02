@@ -1,4 +1,4 @@
-import { Video } from './search-item.models';
+import { Video } from './search-item.model';
 
 export interface SearchResponse {
   kind: string;
