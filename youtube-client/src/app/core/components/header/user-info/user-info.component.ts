@@ -5,8 +5,6 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './user-info.component.html',
-  styleUrl: './user-info.component.scss'
+  styleUrl: './user-info.component.scss',
 })
-export class UserInfoComponent {
-
-}
+export class UserInfoComponent {}
