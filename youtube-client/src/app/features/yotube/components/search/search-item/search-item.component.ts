@@ -9,5 +9,5 @@ import { Video } from '../../../models/search-item.model';
   styleUrl: './search-item.component.scss',
 })
 export class SearchItemComponent {
-  @Input() video!: Video;
+  @Input() video: Video | undefined;
 }
