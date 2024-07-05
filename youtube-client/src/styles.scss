@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+@use './app/styles/base.scss';
+
+@use '@angular/material' as mat;
+@include mat.core();
+
+$theme: mat.define-theme((
+  color: (
+    theme-type: dark,
+    primary: mat.$rose-palette,
+  ),
+  density: (
+    scale: -4
+  ),
+  ));
+html {
+  @include mat.all-component-themes($theme);
+}
+

@@ -1,0 +1,8 @@
+.search-form {
+  display: flex;
+  gap: 5px;
+}
+
+::ng-deep .search-input .mat-mdc-form-field-infix {
+  width: 350px;
+}

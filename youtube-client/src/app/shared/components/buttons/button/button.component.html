@@ -1,0 +1,8 @@
+<button mat-fab extended [color]="colorButton">
+  <ng-container *ngIf="buttonIcon; else noIcon">
+    <mat-icon>{{ buttonIcon }}</mat-icon>
+  </ng-container>
+  <ng-template #noIcon>
+    {{ text }}
+  </ng-template>
+</button>

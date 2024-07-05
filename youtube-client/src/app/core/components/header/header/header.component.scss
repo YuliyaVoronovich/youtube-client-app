@@ -1,0 +1,15 @@
+:host {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 2rem;
+
+  background: rgb(52, 53, 53, 0.5);
+}
