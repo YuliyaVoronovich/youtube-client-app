@@ -1,15 +1,11 @@
-:host {
-  position: relative;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 200px;
-
+.mat-toolbar-row {
+  height: 120px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  padding: 2rem;
+  padding: 1rem;
 
   background: rgb(52, 53, 53, 0.5);
 }

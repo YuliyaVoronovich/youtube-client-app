@@ -1,1 +1,12 @@
-<p>filter works!</p>
+<div class="filtering">
+  <span>Sorting by:</span>
+  <a mat-button routerLink="."> Date </a>
+  <a mat-button routerLink="."> Count of views </a>
+  <!-- <app-button colorButton="accent" text="Date"></app-button>
+  <app-button colorButton="accent" text="Count of views"></app-button> -->
+
+  <span>Filter by title</span>
+  <mat-form-field appearance="fill">
+    <input matInput type="text" />
+  </mat-form-field>
+</div>
