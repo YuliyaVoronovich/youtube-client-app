@@ -1,1 +1,5 @@
-<p>search-results works!</p>
+<div class="search-results">
+  <div *ngFor="let video of videos$ | async">
+    <app-search-item [video]="video"></app-search-item>
+  </div>
+</div>

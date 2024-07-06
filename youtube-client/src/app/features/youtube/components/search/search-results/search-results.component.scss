@@ -1,0 +1,16 @@
+.search-results {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+app-search-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
