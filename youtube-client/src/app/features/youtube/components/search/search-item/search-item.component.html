@@ -1,4 +1,8 @@
-<mat-card class="card" appearance="outlined" appBorderColor>
+<mat-card
+  class="card"
+  appearance="outlined"
+  appBorderBottomColor
+  [publishTime]="video.snippet.publishedAt">
   <mat-card-header>
     <img
       mat-card-image
