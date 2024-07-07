@@ -2,13 +2,13 @@ import { Component, Input } from '@angular/core';
 import { MaterialModule } from '../../../../../shared/material/material.module';
 
 @Component({
-  selector: 'app-statistics-icon',
+  selector: 'app-icon',
   standalone: true,
   imports: [MaterialModule],
-  templateUrl: './statistics-icon.component.html',
-  styleUrl: './statistics-icon.component.scss',
+  templateUrl: './icon.component.html',
+  styleUrl: './icon.component.scss',
 })
-export class StatisticsIconComponent {
+export class IconComponent {
   @Input() fontIcon: string = '';
 
   @Input() text: string = '';
