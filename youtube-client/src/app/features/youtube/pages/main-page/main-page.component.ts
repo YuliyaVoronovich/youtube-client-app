@@ -15,6 +15,8 @@ import { FilterService } from '../../services/filter.service';
 export class MainPageComponent implements OnInit, OnDestroy {
   public showFilters = false;
 
+  public inputValue: string = '';
+
   private subscription!: Subscription;
 
   constructor(private filterService: FilterService) {
@@ -31,5 +33,9 @@ export class MainPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  onValueChange(value: string) {
+    this.inputValue = value;
   }
 }

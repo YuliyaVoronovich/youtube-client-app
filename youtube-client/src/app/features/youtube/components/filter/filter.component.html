@@ -17,6 +17,11 @@
   </mat-button-toggle-group>
   <span>by word or sentance </span>
   <mat-form-field appearance="fill">
-    <input matInput type="text" />
+    <input
+      matInput
+      type="text"
+      [(ngModel)]="inputValue"
+      [ngModelOptions]="{ standalone: true }"
+      (input)="onInputChange()" />
   </mat-form-field>
 </div>

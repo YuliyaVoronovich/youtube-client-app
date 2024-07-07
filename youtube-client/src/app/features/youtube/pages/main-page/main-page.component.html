@@ -1,2 +1,4 @@
-<app-filter *ngIf="this.showFilters"></app-filter>
-<app-search-results></app-search-results>
+<app-filter
+  *ngIf="this.showFilters"
+  (filterChange)="onValueChange($event)"></app-filter>
+<app-search-results [filterValue]="inputValue"></app-search-results>

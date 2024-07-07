@@ -1,19 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { Video } from '../../../models/search-item.model';
 import { SearchService } from '../../../services/search.service';
 import { SearchItemComponent } from '../search-item/search-item.component';
+import { FilterPipe } from '../../../pipes/filter.pipe';
 
 @Component({
   selector: 'app-search-results',
   standalone: true,
-  imports: [CommonModule, SearchItemComponent, NgFor, NgIf],
+  imports: [CommonModule, SearchItemComponent, NgFor, NgIf, FilterPipe],
   templateUrl: './search-results.component.html',
   styleUrl: './search-results.component.scss',
 })
 export class SearchResultsComponent {
   public readonly videos$: Observable<Video[]> = this.searchService.videos$;
+
+  @Input() filterValue!: string;
 
   public readonly videosLength$: Observable<number> =
     this.searchService.videos$.pipe(map(videos => videos.length));
