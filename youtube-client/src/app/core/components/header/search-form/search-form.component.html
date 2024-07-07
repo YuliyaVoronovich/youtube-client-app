@@ -6,7 +6,10 @@
       [(ngModel)]="searchValue"
       [ngModelOptions]="{ standalone: true }" />
   </mat-form-field>
-  <app-button colorButton="primary" text="Search"></app-button>
+  <app-button
+    colorButton="primary"
+    text="Search"
+    (click)="getResult(searchValue)"></app-button>
   <app-button
     colorButton="accent"
     buttonIcon="tune"

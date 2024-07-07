@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, switchMap } from 'rxjs';
+import { BehaviorSubject, Observable, of, switchMap } from 'rxjs';
 import { Video } from '../models/search-item.model';
 import { YoutubeApiService } from './youtube-api.service';
 
@@ -9,13 +9,18 @@ import { YoutubeApiService } from './youtube-api.service';
 export class SearchService {
   private readonly searchString$ = new BehaviorSubject<string>('');
 
-  public readonly videos$: Observable<Video[]> = this.searchString$.pipe(
-    switchMap(searchString => this.youtubeApiServise.getVideos(searchString))
+  public videos$: Observable<Video[]> = this.searchString$.pipe(
+    switchMap(searchString => {
+      if (searchString.trim().length === 0) {
+        return of([]);
+      }
+      return this.youtubeApiServise.getVideos(searchString);
+    })
   );
 
   constructor(private youtubeApiServise: YoutubeApiService) {}
 
-  getVideos(): Observable<Video[]> {
-    return this.videos$;
+  searchVideos(value: string) {
+    this.searchString$.next(value);
   }
 }

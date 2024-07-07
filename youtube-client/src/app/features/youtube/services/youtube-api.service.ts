@@ -17,6 +17,6 @@ export class YoutubeApiService {
       .get<SearchResponse>('./assets/youtube-response.json', {
         params,
       })
-      .pipe(map(response => response.items as Video[]));
+      .pipe(map(response => response.items));
   }
 }

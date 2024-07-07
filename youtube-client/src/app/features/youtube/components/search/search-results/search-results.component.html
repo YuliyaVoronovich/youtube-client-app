@@ -1,4 +1,4 @@
-<div class="search-results">
+<div class="search-results" *ngIf="videosLength$">
   <div *ngFor="let video of videos$ | async">
     <app-search-item [video]="video"></app-search-item>
   </div>
