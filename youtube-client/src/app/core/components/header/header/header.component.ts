@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { SearchFormComponent } from '../search-form/search-form.component';
 import { UserInfoComponent } from '../user-info/user-info.component';
 import { LogoComponent } from '../logo/logo.component';
-import { ButtonComponent } from '../../../../shared/components/buttons/button/button.component';
+import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { MaterialModule } from '../../../../shared/material/material.module';
 
 @Component({

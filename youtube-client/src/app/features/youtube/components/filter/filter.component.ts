@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MaterialModule } from '../../../../shared/material/material.module';
-import { ButtonComponent } from '../../../../shared/components/buttons/button/button.component';
-import { IconComponent } from '../search/icon/icon.component';
+import { ButtonComponent } from '../../../../shared/components/button/button.component';
+import { IconComponent } from '../../../../shared/components/icon/icon.component';
 
 @Component({
   selector: 'app-filter',

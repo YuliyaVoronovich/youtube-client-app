@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '../../../../shared/material/material.module';
-import { ButtonComponent } from '../../../../shared/components/buttons/button/button.component';
+import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { FilterService } from '../../../../features/youtube/services/filter.service';
 import { SearchService } from '../../../../features/youtube/services/search.service';
 

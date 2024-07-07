@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { NgIf } from '@angular/common';
-import { MaterialModule } from '../../../material/material.module';
+import { MaterialModule } from '../../material/material.module';
 
 @Component({
   selector: 'app-button',
@@ -10,7 +10,7 @@ import { MaterialModule } from '../../../material/material.module';
   styleUrl: './button.component.scss',
 })
 export class ButtonComponent {
-  @Input() colorButton: 'primary' | 'accent' | 'warn' = 'primary';
+  @Input() colorButton: 'primary' | 'accent' | 'warn' | 'basic' = 'primary';
 
   @Input() text: string = '';
 

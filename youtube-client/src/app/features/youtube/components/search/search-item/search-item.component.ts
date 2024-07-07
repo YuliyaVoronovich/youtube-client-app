@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Video } from '../../../models/search-item.model';
 import { MaterialModule } from '../../../../../shared/material/material.module';
-import { ButtonComponent } from '../../../../../shared/components/buttons/button/button.component';
-import { IconComponent } from '../icon/icon.component';
+import { ButtonComponent } from '../../../../../shared/components/button/button.component';
+import { IconComponent } from '../../../../../shared/components/icon/icon.component';
 import { BorderBottomColorDirective } from '../../../directives/border-bottom-color.directive';
 
 @Component({
