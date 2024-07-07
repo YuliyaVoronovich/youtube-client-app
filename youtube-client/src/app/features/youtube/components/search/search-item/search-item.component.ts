@@ -3,7 +3,7 @@ import { MatCardModule } from '@angular/material/card';
 import { Video } from '../../../models/search-item.model';
 import { ButtonComponent } from '../../../../../shared/components/button/button.component';
 import { IconComponent } from '../../../../../shared/components/icon/icon.component';
-import { BorderBottomColorDirective } from '../../../directives/border-bottom-color.directive';
+import { BorderBottomDirective } from '../../../directives/border-bottom.directive';
 
 @Component({
   selector: 'app-search-item',
@@ -12,11 +12,11 @@ import { BorderBottomColorDirective } from '../../../directives/border-bottom-co
     MatCardModule,
     ButtonComponent,
     IconComponent,
-    BorderBottomColorDirective,
+    BorderBottomDirective,
   ],
   templateUrl: './search-item.component.html',
   styleUrl: './search-item.component.scss',
 })
 export class SearchItemComponent {
-  @Input() video!: Video;
+  @Input({ required: true }) video!: Video;
 }
