@@ -4,11 +4,12 @@
   appBorderBottomColor
   [publishTime]="video.snippet.publishedAt">
   <mat-card-header>
-    <div></div>
-    <img
-      mat-card-image
-      src="{{ video.snippet.thumbnails.medium.url }}"
-      alt="Photo" />
+    <div class="image">
+      <img
+        mat-card-image
+        src="{{ video.snippet.thumbnails.medium.url }}"
+        alt="Photo" />
+    </div>
   </mat-card-header>
   <mat-card-content>
     <p class="statistics-icon">
