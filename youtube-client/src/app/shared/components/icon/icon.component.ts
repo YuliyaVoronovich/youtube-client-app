@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { MaterialModule } from '../../material/material.module';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-icon',
   standalone: true,
-  imports: [MaterialModule],
+  imports: [MatIconModule],
   templateUrl: './icon.component.html',
   styleUrl: './icon.component.scss',
 })

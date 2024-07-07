@@ -8,7 +8,7 @@ const GENERAL_STYLE = '8px solid ';
   standalone: true,
 })
 export class BorderBottomColorDirective implements OnInit {
-  @Input() publishTime!: Date;
+  @Input({ required: true }) publishTime!: string;
 
   constructor(private elementRef: ElementRef) {}
 

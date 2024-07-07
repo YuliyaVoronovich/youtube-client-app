@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { SearchFormComponent } from '../search-form/search-form.component';
 import { UserInfoComponent } from '../user-info/user-info.component';
 import { LogoComponent } from '../logo/logo.component';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
-import { MaterialModule } from '../../../../shared/material/material.module';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +13,7 @@ import { MaterialModule } from '../../../../shared/material/material.module';
     SearchFormComponent,
     ButtonComponent,
     UserInfoComponent,
-    MaterialModule,
+    MatToolbarModule,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',

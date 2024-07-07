@@ -1,11 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { NgIf } from '@angular/common';
-import { MaterialModule } from '../../material/material.module';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-button',
   standalone: true,
-  imports: [MaterialModule, NgIf],
+  imports: [MatButtonModule, MatIconModule, NgIf],
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss',
 })
