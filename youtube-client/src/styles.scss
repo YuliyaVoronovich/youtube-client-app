@@ -1,7 +1,7 @@
 @use './app/styles/base.scss';
-
 @use '@angular/material' as mat;
-@include mat.core();
+
+@include mat.core;
 
 $theme: mat.define-theme((
   color: (
@@ -12,6 +12,7 @@ $theme: mat.define-theme((
     scale: -4
   ),
   ));
+
 html {
   @include mat.all-component-themes($theme);
 }

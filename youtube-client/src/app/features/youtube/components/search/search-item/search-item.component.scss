@@ -1,13 +1,13 @@
 .card {
+  display: flex;
+  flex-direction: column;
+
   max-width: 300px;
   height: 100%;
   padding: 10px;
 
-  display: flex;
-  flex-direction: column;
-
   background: #fbefee;
-  box-shadow: 0px 0px 9px 0px #9f9998;
+  box-shadow: 0 0 9px 0 #9f9998;
 }
 
 .card-content {
@@ -20,11 +20,13 @@ mat-card-actions {
 }
 
 .image {
+  overflow: hidden;
+
   width: 100%;
   height: auto;
   max-height: 300px;
-  overflow: hidden;
-  box-shadow: 0px 0px 5px 0px #9f9998;
+
+  box-shadow: 0 0 5px 0 #9f9998;
 }
 
 .image img {
@@ -35,12 +37,14 @@ mat-card-actions {
 
 .statistics-icon {
   display: flex;
+  gap: 5px;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+
   margin: 0;
   margin-top: 5px;
   padding: 0;
+
   font-size: 0.75rem;
   list-style-type: none;
 }
@@ -50,6 +54,7 @@ mat-card-actions {
   align-items: center;
   font-size: 0.75rem;
 }
+
 mat-card-content,
 mat-card-title{
   padding: 8px 16px;
@@ -57,13 +62,13 @@ mat-card-title{
 }
 
 mat-card-title {
-  color: rgb(76, 70, 70);
   font-weight: 700;
+  color: rgb(76 70 70);
 }
 
 .card-footer {
+  width: 100%;
   margin-top: auto;
   padding: 1rem;
   text-align: right;
-  width: 100%;
 }

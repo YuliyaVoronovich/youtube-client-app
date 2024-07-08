@@ -1,10 +1,11 @@
 .search-results {
-  max-width: 1440px;
-  width: 100%;
-  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
   justify-content: center;
+
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
   padding: 2rem 0;
 }
