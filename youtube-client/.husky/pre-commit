@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+cd youtube-client
+
+npm run format && npm run stylelint:fix && npm run lint

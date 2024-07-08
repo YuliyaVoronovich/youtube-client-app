@@ -3,17 +3,18 @@
 
 @include mat.core;
 
-$theme: mat.define-theme((
-  color: (
-    theme-type: light,
-    primary: mat.$rose-palette,
-  ),
-  density: (
-    scale: -4
-  ),
-  ));
+$theme: mat.define-theme(
+  (
+    color: (
+      theme-type: light,
+      primary: mat.$rose-palette,
+    ),
+    density: (
+      scale: -4,
+    ),
+  )
+);
 
 html {
   @include mat.all-component-themes($theme);
 }
-

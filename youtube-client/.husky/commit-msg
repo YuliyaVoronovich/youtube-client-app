@@ -1,0 +1,3 @@
+cd youtube-client
+
+npx --no -- commitlint --edit $1
