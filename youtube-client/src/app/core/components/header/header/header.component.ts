@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { ButtonComponent } from 'app/shared/components/button/button.component';
+import { ButtonComponent } from '@shared/components/button/button.component';
 import { UserInfoComponent } from '../user-info/user-info.component';
 import { LogoComponent } from '../logo/logo.component';
 import { SearchFormComponent } from '../search-form/search-form.component';

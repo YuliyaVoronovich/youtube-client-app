@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FilterService } from 'app/features/youtube/services/filter.service';
-import { SearchService } from 'app/features/youtube/services/search.service';
-import { ButtonComponent } from 'app/shared/components/button/button.component';
+import { FilterService } from '@features/youtube/services/filter.service';
+import { SearchService } from '@features/youtube/services/search.service';
+import { ButtonComponent } from '@shared/components/button/button.component';
 
 @Component({
   selector: 'app-search-form',
