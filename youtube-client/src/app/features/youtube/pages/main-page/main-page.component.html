@@ -1,4 +1,8 @@
 <app-filter
   *ngIf="this.showFilters"
-  (filterChange)="onValueChange($event)"></app-filter>
-<app-search-results [filterValue]="inputValue"></app-search-results>
+  (filterChange)="onFilterChange($event)"
+  (sortChange)="onSortingChange($event)"></app-filter>
+<app-search-results
+  [filterValue]="inputValue"
+  [sortType]="this.sortType"
+  [orderType]="this.orderType"></app-search-results>

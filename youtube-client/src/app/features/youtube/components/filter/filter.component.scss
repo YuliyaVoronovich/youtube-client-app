@@ -13,10 +13,12 @@
   align-items: center;
 }
 
-mat-button-toggle-group {
-  margin: 0 12px;
+.sorting-buttons {
+  display: flex;
+  gap: 3px;
+  margin: 0 8px;
 }
 
-::ng-deep .mat-button-toggle .mat-pseudo-checkbox  {
-  display: none;
+.title-filter {
+  margin-right: 4px;
 }

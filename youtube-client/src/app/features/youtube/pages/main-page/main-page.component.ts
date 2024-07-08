@@ -4,6 +4,11 @@ import { Subscription } from 'rxjs';
 import { FilterComponent } from '../../components/filter/filter.component';
 import { SearchResultsComponent } from '../../components/search/search-results/search-results.component';
 import { FilterService } from '../../services/filter.service';
+import {
+  SortFieldType,
+  SortingField,
+  SortOrderType,
+} from '../../models/sort-field.model';
 
 @Component({
   selector: 'app-main-page',
@@ -16,6 +21,10 @@ export class MainPageComponent implements OnInit, OnDestroy {
   public showFilters = false;
 
   public inputValue: string = '';
+
+  public sortType = SortFieldType.Date;
+
+  public orderType = SortOrderType.Desc;
 
   private subscription!: Subscription;
 
@@ -35,7 +44,12 @@ export class MainPageComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  onValueChange(value: string) {
+  onFilterChange(value: string) {
     this.inputValue = value;
+  }
+
+  onSortingChange(sortingField: SortingField) {
+    this.sortType = sortingField.value;
+    this.orderType = sortingField.order;
   }
 }

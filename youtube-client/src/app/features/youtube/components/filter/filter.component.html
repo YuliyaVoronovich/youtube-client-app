@@ -1,21 +1,24 @@
 <div class="filtering">
   <span>Sorting by: </span>
-  <mat-button-toggle-group name="sorting" aria-label="Sorting">
-    <mat-button-toggle value="date-asc"
-      >date
-      <app-icon fontIcon="expand_less" text=""></app-icon>
-    </mat-button-toggle>
-    <mat-button-toggle value="date-desc"
-      >date <app-icon fontIcon="expand_more" text=""></app-icon
-    ></mat-button-toggle>
-    <mat-button-toggle value="count-asc"
-      >count of views <app-icon fontIcon="expand_less" text=""></app-icon
-    ></mat-button-toggle>
-    <mat-button-toggle value="count-desc"
-      >count of views <app-icon fontIcon="expand_more" text=""></app-icon
-    ></mat-button-toggle>
-  </mat-button-toggle-group>
-  <span>by word or sentance </span>
+  <div class="sorting-buttons">
+    <app-button
+      mat-button
+      [colorButton]="buttonColor(dateFieldType)"
+      [buttonIcon]="buttonIcon(showDateIcon)"
+      [text]="'date'"
+      (click)="toggleSorting(dateFieldType)">
+      date
+    </app-button>
+    <app-button
+      mat-button
+      [colorButton]="buttonColor(countFieldType)"
+      [buttonIcon]="buttonIcon(showCountIcon)"
+      [text]="'count of view'"
+      (click)="toggleSorting(countFieldType)">
+      count
+    </app-button>
+  </div>
+  <span class="title-filter">by word or sentance </span>
   <mat-form-field appearance="fill">
     <input
       matInput
