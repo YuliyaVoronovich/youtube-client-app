@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { Video } from '../../../models/search-item.model';
-import { ButtonComponent } from '../../../../../shared/components/button/button.component';
-import { IconComponent } from '../../../../../shared/components/icon/icon.component';
-import { BorderBottomDirective } from '../../../directives/border-bottom.directive';
+import { BorderBottomDirective } from 'app/features/youtube/directives/border-bottom.directive';
+import { Video } from 'app/features/youtube/models/search-item.model';
+import { ButtonComponent } from 'app/shared/components/button/button.component';
+import { IconComponent } from 'app/shared/components/icon/icon.component';
 
 @Component({
   selector: 'app-search-item',

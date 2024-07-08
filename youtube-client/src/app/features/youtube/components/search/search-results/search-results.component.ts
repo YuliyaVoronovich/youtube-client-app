@@ -1,12 +1,15 @@
 import { Component, Input } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
-import { Video } from '../../../models/search-item.model';
-import { SearchService } from '../../../services/search.service';
+import { FilterPipe } from 'app/features/youtube/pipes/filter.pipe';
+import { SortPipe } from 'app/features/youtube/pipes/sort.pipe';
+import { Video } from 'app/features/youtube/models/search-item.model';
+import {
+  SortFieldType,
+  SortOrderType,
+} from 'app/features/youtube/models/sort-field.model';
+import { SearchService } from 'app/features/youtube/services/search.service';
 import { SearchItemComponent } from '../search-item/search-item.component';
-import { FilterPipe } from '../../../pipes/filter.pipe';
-import { SortPipe } from '../../../pipes/sort.pipe';
-import { SortFieldType, SortOrderType } from '../../../models/sort-field.model';
 
 @Component({
   selector: 'app-search-results',

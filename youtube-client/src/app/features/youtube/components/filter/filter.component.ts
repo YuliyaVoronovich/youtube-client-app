@@ -3,8 +3,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
-import { ButtonComponent } from '../../../../shared/components/button/button.component';
-import { IconComponent } from '../../../../shared/components/icon/icon.component';
+
+import { ButtonComponent } from 'app/shared/components/button/button.component';
+import { IconComponent } from 'app/shared/components/icon/icon.component';
 import {
   SortFieldType,
   SortingField,

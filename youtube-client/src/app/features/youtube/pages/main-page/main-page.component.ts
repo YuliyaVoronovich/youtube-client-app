@@ -1,14 +1,15 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { Subscription } from 'rxjs';
-import { FilterComponent } from '../../components/filter/filter.component';
-import { SearchResultsComponent } from '../../components/search/search-results/search-results.component';
-import { FilterService } from '../../services/filter.service';
+
 import {
   SortFieldType,
   SortingField,
   SortOrderType,
 } from '../../models/sort-field.model';
+import { FilterComponent } from '../../components/filter/filter.component';
+import { SearchResultsComponent } from '../../components/search/search-results/search-results.component';
+import { FilterService } from '../../services/filter.service';
 
 @Component({
   selector: 'app-main-page',
