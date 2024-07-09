@@ -14,11 +14,11 @@ export class SearchService {
       if (searchString.trim().length === 0) {
         return of([]);
       }
-      return this.youtubeApiServise.getVideos(searchString);
+      return this.youtubeApiService.getVideos(searchString);
     })
   );
 
-  constructor(private youtubeApiServise: YoutubeApiService) {}
+  constructor(private youtubeApiService: YoutubeApiService) {}
 
   searchVideos(value: string) {
     this.searchString$.next(value);
