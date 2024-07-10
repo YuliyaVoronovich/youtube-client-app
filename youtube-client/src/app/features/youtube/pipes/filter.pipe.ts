@@ -6,12 +6,11 @@ import { Video } from '../models/search-item.model';
   standalone: true,
 })
 export class FilterPipe implements PipeTransform {
-  transform(videos: Video[] | null, input: string): Video[] | undefined {
-    if (input && videos) {
-      return videos.filter(video =>
-        video.snippet.title.toLowerCase().includes(input.toLowerCase())
-      );
-    }
-    return videos ?? [];
+  transform(videos: Video[] | null, input: string): Video[] | [] {
+    return input && videos
+      ? videos.filter(video =>
+          video.snippet.title.toLowerCase().includes(input.toLowerCase())
+        )
+      : videos ?? [];
   }
 }
