@@ -42,7 +42,7 @@ export class FilterComponent {
 
   public showCountIcon = false;
 
-  public SORT_ORDER_ICONS: { [key: string]: string } = {
+  public SORT_ORDER_ICONS: Record<SortOrderType, string> = {
     [SortOrderType.Asc]: 'expand_less',
     [SortOrderType.Desc]: 'expand_more',
   };
