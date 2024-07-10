@@ -13,6 +13,9 @@ export class SortPipe implements PipeTransform {
     param: SortFieldType,
     order: SortOrderType
   ): Video[] | undefined {
-    return videos ? sortVideos(videos, param, order) : videos ?? [];
+    const sortedVideos = [...videos];
+    return sortedVideos
+      ? sortVideos(sortedVideos, param, order)
+      : sortedVideos ?? [];
   }
 }

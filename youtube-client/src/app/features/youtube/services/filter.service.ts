@@ -9,10 +9,6 @@ export class FilterService {
 
   public showFilters$: Observable<boolean> = this.showFiltersSubject;
 
-  isShowFilter(): boolean {
-    return this.showFiltersSubject.value;
-  }
-
   toggleShowFilter(): void {
     this.showFiltersSubject.next(!this.showFiltersSubject.value);
   }

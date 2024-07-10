@@ -29,9 +29,7 @@ export class MainPageComponent implements OnInit, OnDestroy {
 
   private subscription!: Subscription;
 
-  constructor(private filterService: FilterService) {
-    this.showFilters = this.filterService.isShowFilter();
-  }
+  constructor(private filterService: FilterService) {}
 
   ngOnInit() {
     this.subscription = this.filterService.showFilters$.subscribe(
