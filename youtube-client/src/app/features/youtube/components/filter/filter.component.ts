@@ -51,11 +51,11 @@ export class FilterComponent {
 
   readonly countFieldType = SortFieldType.Count;
 
-  buttonColor(sortField: SortFieldType): string {
+  getButtonColor(sortField: SortFieldType): string {
     return this.sortingField.value === sortField ? 'primary' : 'accent';
   }
 
-  buttonIcon(showIcon: boolean): string {
+  getButtonIcon(showIcon: boolean): string {
     if (!showIcon) {
       return '';
     }

@@ -3,16 +3,16 @@
   <div class="sorting-buttons">
     <app-button
       mat-button
-      [colorButton]="buttonColor(dateFieldType)"
-      [buttonIcon]="buttonIcon(showDateIcon)"
+      [colorButton]="getButtonColor(dateFieldType)"
+      [buttonIcon]="getButtonIcon(showDateIcon)"
       [text]="'date'"
       (click)="toggleSorting(dateFieldType)">
       date
     </app-button>
     <app-button
       mat-button
-      [colorButton]="buttonColor(countFieldType)"
-      [buttonIcon]="buttonIcon(showCountIcon)"
+      [colorButton]="getButtonColor(countFieldType)"
+      [buttonIcon]="getButtonIcon(showCountIcon)"
       [text]="'count of view'"
       (click)="toggleSorting(countFieldType)">
       count
