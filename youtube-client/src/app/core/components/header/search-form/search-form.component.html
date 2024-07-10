@@ -1,1 +1,17 @@
-<p>search-form works!</p>
+<form action="" class="search-form">
+  <mat-form-field appearance="fill" class="search-input">
+    <input
+      matInput
+      type="search"
+      [(ngModel)]="searchValue"
+      [ngModelOptions]="{ standalone: true }" />
+  </mat-form-field>
+  <app-button
+    colorButton="primary"
+    text="Search"
+    (click)="getResult(searchValue)"></app-button>
+  <app-button
+    colorButton="accent"
+    buttonIcon="tune"
+    (click)="toggleFilters()"></app-button>
+</form>

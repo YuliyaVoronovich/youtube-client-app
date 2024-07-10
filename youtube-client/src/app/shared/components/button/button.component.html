@@ -1,0 +1,6 @@
+<button mat-fab extended [color]="colorButton">
+  <ng-container>
+    <span *ngIf="text">{{ text }}</span>
+    <mat-icon *ngIf="buttonIcon">{{ buttonIcon }}</mat-icon>
+  </ng-container>
+</button>

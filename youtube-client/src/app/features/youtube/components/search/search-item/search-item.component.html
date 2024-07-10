@@ -1,1 +1,37 @@
-<p>search-item works!</p>
+<mat-card
+  class="card"
+  appearance="outlined"
+  appBorderBottom
+  [publishTime]="video.snippet.publishedAt">
+  <mat-card-header>
+    <div class="image">
+      <img
+        mat-card-image
+        src="{{ video.snippet.thumbnails.medium.url }}"
+        alt="Photo" />
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <p class="statistics-icon">
+      <app-icon
+        fontIcon="remove_red_eye"
+        [text]="video.statistics.viewCount"></app-icon>
+      <app-icon
+        fontIcon="thumb_up"
+        [text]="video.statistics.likeCount"></app-icon>
+      <app-icon
+        fontIcon="thumb_down"
+        [text]="video.statistics.dislikeCount"></app-icon>
+      <app-icon
+        fontIcon="chat"
+        [text]="video.statistics.commentCount"></app-icon>
+    </p>
+  </mat-card-content>
+  <mat-card-title-group>
+    <mat-card-title>{{ video.snippet.title }}</mat-card-title>
+  </mat-card-title-group>
+  <mat-card-actions>
+    <app-button colorButton="primary" text="More"></app-button>
+  </mat-card-actions>
+  <mat-card-footer> </mat-card-footer>
+</mat-card>

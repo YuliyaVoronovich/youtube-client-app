@@ -7,7 +7,7 @@ export interface Video {
 }
 
 export interface Snippet {
-  publishedAt: Date;
+  publishedAt: string;
   channelId: string;
   title: string;
   description: string;

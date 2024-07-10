@@ -1,1 +1,30 @@
-<p>filter works!</p>
+<div class="filtering">
+  <span>Sorting by: </span>
+  <div class="sorting-buttons">
+    <app-button
+      mat-button
+      [colorButton]="getButtonColor(dateFieldType)"
+      [buttonIcon]="getButtonIcon(showDateIcon)"
+      text="date"
+      (click)="toggleSorting(dateFieldType)">
+      date
+    </app-button>
+    <app-button
+      mat-button
+      [colorButton]="getButtonColor(countFieldType)"
+      [buttonIcon]="getButtonIcon(showCountIcon)"
+      text="count of view"
+      (click)="toggleSorting(countFieldType)">
+      count
+    </app-button>
+  </div>
+  <span class="title-filter">by word or sentance </span>
+  <mat-form-field appearance="fill">
+    <input
+      matInput
+      type="text"
+      [(ngModel)]="inputValue"
+      [ngModelOptions]="{ standalone: true }"
+      (input)="onInputChange()" />
+  </mat-form-field>
+</div>
