@@ -28,11 +28,11 @@ import { SearchItemComponent } from '../search-item/search-item.component';
 export class SearchResultsComponent {
   public readonly videos$: Observable<Video[]> = this.searchService.videos$;
 
-  @Input() filterValue!: string;
+  @Input({ required: true }) filterValue!: string;
 
-  @Input() sortType!: SortFieldType;
+  @Input({ required: true }) sortType!: SortFieldType;
 
-  @Input() orderType!: SortOrderType;
+  @Input({ required: true }) orderType!: SortOrderType;
 
   public readonly videosLength$: Observable<number> =
     this.searchService.videos$.pipe(map(videos => videos.length));
