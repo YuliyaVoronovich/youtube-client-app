@@ -17,7 +17,6 @@ export class BorderBottomDirective implements OnInit {
 
   ngOnInit() {
     this.setBorderColor();
-    this.setBorderRadius();
   }
 
   private setBorderColor(): void {
@@ -25,14 +24,6 @@ export class BorderBottomDirective implements OnInit {
       this.elementRef.nativeElement,
       'border-bottom',
       `${GENERAL_STYLE} ${getBorderColor(this.publishTime)}`
-    );
-  }
-
-  private setBorderRadius(): void {
-    this.renderer.setStyle(
-      this.elementRef.nativeElement,
-      'border-radius',
-      '0 0 10px 10px'
     );
   }
 }
