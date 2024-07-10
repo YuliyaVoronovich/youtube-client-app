@@ -9,13 +9,10 @@ import { SortFieldType, SortOrderType } from '../models/sort-field.model';
 })
 export class SortPipe implements PipeTransform {
   transform(
-    videos: Video[] | [],
+    videos: Video[],
     param: SortFieldType,
     order: SortOrderType
-  ): Video[] | undefined {
-    const sortedVideos = [...videos];
-    return sortedVideos
-      ? sortVideos(sortedVideos, param, order)
-      : sortedVideos ?? [];
+  ): Video[] {
+    return videos ? sortVideos(videos, param, order) : videos;
   }
 }
