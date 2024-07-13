@@ -11,6 +11,7 @@
     text="Search"
     (click)="getResult(searchValue)"></app-button>
   <app-button
+    *ngIf="isShowButtonSettings()"
     colorButton="accent"
     buttonIcon="tune"
     (click)="toggleFilters()"></app-button>

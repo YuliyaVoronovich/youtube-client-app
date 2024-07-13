@@ -3,6 +3,8 @@
   margin: 50px auto;
 
   ::ng-deep .icon-back .mat-icon {
+    cursor: pointer;
+
     align-self: flex-start;
 
     width: 80px;
@@ -10,6 +12,10 @@
 
     font-size: 5rem;
     color: rgb(255 0 111);
+
+    &:hover {
+      color: #ba005c;
+    }
   }
 }
 
