@@ -6,13 +6,13 @@ const COUNT_DAYS = 7;
 export function getBorderColor(publishTime: string): string {
   const difference = Date.now() - new Date(publishTime).getTime();
   if (difference > MONTH_IN_MILLISECOND * COUNT_MONTHS) {
-    return 'red';
+    return '#f48282';
   }
   if (difference > MONTH_IN_MILLISECOND) {
-    return 'yellow';
+    return '#ffff90';
   }
   if (difference > DAY_IN_MILLISECOND * COUNT_DAYS) {
-    return 'green';
+    return '#8aba8a';
   }
-  return 'blue';
+  return '#5b5b9d';
 }

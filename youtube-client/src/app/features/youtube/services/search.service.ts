@@ -27,4 +27,8 @@ export class SearchService {
   searchVideos(value: string) {
     this.searchString$.next(value);
   }
+
+  getVideoById() {
+    return this.youtubeApiService.getVideos().pipe(startWith([]));
+  }
 }
