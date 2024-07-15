@@ -76,6 +76,7 @@ mat-card-title {
   padding: 1rem;
   text-align: right;
 }
+
 app-button {
   width: 100%;
 }
@@ -83,5 +84,4 @@ app-button {
 :host ::ng-deep .mat-mdc-extended-fab {
   width: 100%;
   font-size: 1rem;
-
 }
