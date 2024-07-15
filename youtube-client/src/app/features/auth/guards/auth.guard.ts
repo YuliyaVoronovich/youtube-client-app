@@ -5,10 +5,8 @@ import { AuthService } from '../services/auth.service';
 export const authGuard: CanMatchFn = () => {
   const authService: AuthService = inject(AuthService);
 
-  authService.isLoginned$.subscribe((isLoggedIn: boolean) => {
-    console.warn(isLoggedIn);
-    return !isLoggedIn ? inject(Router).navigate(['login']) : true;
-  });
-
-  return true;
+  if (authService.isLoginned()) {
+    return true;
+  }
+  return inject(Router).navigate(['login']);
 };

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocalStorageService } from '@core/services/local-storage.service';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +11,9 @@ export class AuthService {
     this.getAuthStatus()
   );
 
-  public isLoginned$: Observable<boolean> = this.isLoginnedSubject;
+  public isLoginned(): boolean {
+    return this.isLoginnedSubject.value;
+  }
 
   constructor(
     private localStorage: LocalStorageService,
@@ -24,8 +26,8 @@ export class AuthService {
   }
 
   public logout() {
-    this.isLoginnedSubject.next(false);
     this.localStorage.removeItem('fakeUserToken');
+    this.isLoginnedSubject.next(false);
   }
 
   private getAuthStatus() {
