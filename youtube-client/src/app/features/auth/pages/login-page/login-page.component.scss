@@ -7,20 +7,21 @@
 }
 
 .login-form {
-  margin-top: 45px;
-  width: 344px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 28px 20px 26px 20px;
+
+  width: 344px;
+  margin-top: 45px;
+  padding: 28px 20px 26px;
+
   background-color: #f2f2f2;
   border-radius: 5px;
 }
 
 .btn {
-  margin-top: 1rem;
+  align-self: flex-end;
   width: 124px;
   height: 30px;
-  align-self: flex-end;
+  margin-top: 1rem;
 }
-
