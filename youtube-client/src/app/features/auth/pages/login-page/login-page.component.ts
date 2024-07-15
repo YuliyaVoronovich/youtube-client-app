@@ -4,6 +4,7 @@ import { MatFormField, MatHint } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
+import { Routes } from '@core/models/route.model';
 import { User } from '@features/auth/models/user.model';
 import { AuthService } from '@features/auth/services/auth.service';
 import { ButtonComponent } from '@shared/components/button/button.component';
@@ -40,7 +41,7 @@ export class LoginPageComponent {
     if (username && password) {
       this.loginForm.reset();
       this.authService.login(username);
-      this.router.navigateByUrl('/main');
+      this.router.navigate([Routes.Main]);
     }
   }
 }

@@ -1,4 +1,5 @@
 export const enum Routes {
-  Main = '/main',
   Default = '/',
+  Main = '/main',
+  Login = '/login',
 }
