@@ -1,11 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  BehaviorSubject,
-  filter,
-  Observable,
-  startWith,
-  switchMap,
-} from 'rxjs';
+import { BehaviorSubject, filter, Observable, switchMap } from 'rxjs';
 import { Video } from '../models/search-item.model';
 import { YoutubeApiService } from './youtube-api.service';
 
@@ -18,7 +12,7 @@ export class SearchService {
   public videos$: Observable<Video[]> = this.searchString$.pipe(
     filter(searchString => searchString.trim().length > 0),
     switchMap(searchString => {
-      return this.youtubeApiService.getVideos(searchString).pipe(startWith([]));
+      return this.youtubeApiService.getVideos(searchString).pipe();
     })
   );
 
@@ -29,6 +23,6 @@ export class SearchService {
   }
 
   getVideoById() {
-    return this.youtubeApiService.getVideos().pipe(startWith([]));
+    return this.youtubeApiService.getVideos();
   }
 }

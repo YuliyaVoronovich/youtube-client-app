@@ -56,6 +56,7 @@ export class SearchFormComponent implements OnInit, OnDestroy {
 
   getResult(value: string) {
     this.searchService.searchVideos(value);
+    this.router.navigate(['/']);
   }
 
   toggleFilters() {
