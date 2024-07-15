@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
 import { User } from '@features/auth/models/user.model';
 import { AuthService } from '@features/auth/services/auth.service';
+import { ButtonComponent } from '@shared/components/button/button.component';
 import { IconComponent } from '@shared/components/icon/icon.component';
 
 @Component({
@@ -18,6 +19,7 @@ import { IconComponent } from '@shared/components/icon/icon.component';
     ReactiveFormsModule,
     MatInputModule,
     IconComponent,
+    ButtonComponent,
   ],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss',

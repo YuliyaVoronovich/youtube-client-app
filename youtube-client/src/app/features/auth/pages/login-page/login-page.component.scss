@@ -15,13 +15,17 @@
   margin-top: 45px;
   padding: 28px 20px 26px;
 
-  background-color: #f2f2f2;
+  background: #fbefee;
+  box-shadow: 0 0 9px 0 #9f9998;
   border-radius: 5px;
 }
 
-.btn {
-  align-self: flex-end;
-  width: 124px;
-  height: 30px;
-  margin-top: 1rem;
+app-button {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+:host ::ng-deep .mat-mdc-extended-fab {
+  width: 100px;
 }
