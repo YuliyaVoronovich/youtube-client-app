@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { NotFoundPageComponent } from '@core/pages/not-found-page/not-found-page.component';
-import { LoginPageComponent } from '@features/auth/pages/login-page/login-page.component';
 import { authGuard } from '@features/auth/guards/auth.guard';
 
 export const routes: Routes = [
@@ -21,6 +20,12 @@ export const routes: Routes = [
       ).then(m => m.DetailedInformationPageComponent),
     canMatch: [authGuard],
   },
-  { path: 'login', component: LoginPageComponent },
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('@features/auth/pages/login-page/login-page.component').then(
+        m => m.LoginPageComponent
+      ),
+  },
   { path: '**', component: NotFoundPageComponent },
 ];

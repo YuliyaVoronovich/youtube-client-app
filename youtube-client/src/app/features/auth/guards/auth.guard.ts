@@ -9,5 +9,5 @@ export const authGuard: CanMatchFn = () => {
   if (authService.isLoginned()) {
     return true;
   }
-  return inject(Router).navigate([Routes.Login]);
+  return inject(Router).createUrlTree([Routes.Login]);
 };

@@ -7,7 +7,7 @@ import { CardShadowColorDirective } from '@features/youtube/directives/card-shad
 import { Video } from '@features/youtube/models/search-item.model';
 import { SearchService } from '@features/youtube/services/search.service';
 import { IconComponent } from '@shared/components/icon/icon.component';
-import { map, Subscription } from 'rxjs';
+import { map, Subscription, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-detailed-information-page',
@@ -29,32 +29,30 @@ export class DetailedInformationPageComponent implements OnInit, OnDestroy {
 
   private routeSub!: Subscription;
 
-  private videoSub!: Subscription;
-
   constructor(
     private route: ActivatedRoute,
     private searchService: SearchService
   ) {}
 
   ngOnInit(): void {
-    this.routeSub = this.route.params.subscribe(params => {
-      if (!params['id']) return;
-
-      this.videoSub = this.searchService
-        .getVideoById()
-        .pipe(
-          map((videos: Video[]) => {
-            return videos.find(video => video.id === params['id']);
-          })
-        )
-        .subscribe(video => {
-          this.video = video;
-        });
-    });
+    this.routeSub = this.route.params
+      .pipe(
+        switchMap(params => {
+          return this.searchService
+            .getVideoById()
+            .pipe(
+              map((videos: Video[]) =>
+                videos.find(video => video.id === params['id'])
+              )
+            );
+        })
+      )
+      .subscribe(video => {
+        this.video = video;
+      });
   }
 
   ngOnDestroy(): void {
     this.routeSub.unsubscribe();
-    this.videoSub.unsubscribe();
   }
 }
