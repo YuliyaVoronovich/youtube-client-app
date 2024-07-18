@@ -1,13 +1,13 @@
 import { Directive, ElementRef, Input, Renderer2, OnInit } from '@angular/core';
 import { getBorderColor } from '../utils/border-color';
 
-const GENERAL_STYLE = '6px solid ';
+const GENERAL_STYLE = '3px 3px 10px 0px ';
 
 @Directive({
-  selector: '[appBorderBottom]',
+  selector: '[appCardShadowColor]',
   standalone: true,
 })
-export class BorderBottomDirective implements OnInit {
+export class CardShadowColorDirective implements OnInit {
   @Input({ required: true }) publishTime!: string;
 
   constructor(
@@ -22,7 +22,7 @@ export class BorderBottomDirective implements OnInit {
   private setBorderColor(): void {
     this.renderer.setStyle(
       this.elementRef.nativeElement,
-      'border-bottom',
+      'box-shadow',
       `${GENERAL_STYLE} ${getBorderColor(this.publishTime)}`
     );
   }

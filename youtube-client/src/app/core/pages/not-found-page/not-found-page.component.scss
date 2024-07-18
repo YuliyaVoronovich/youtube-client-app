@@ -1,0 +1,16 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: calc(100vh - 120px);
+
+  font-size: 2.5rem;
+}
+
+:host ::ng-deep .icon {
+  width: 60px;
+  height: 60px;
+  font-size: 4rem;
+  color: rgb(255 0 111);
+}

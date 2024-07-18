@@ -31,7 +31,10 @@
     <mat-card-title>{{ video.snippet.title }}</mat-card-title>
   </mat-card-title-group>
   <mat-card-actions>
-    <app-button colorButton="primary" text="More"></app-button>
+    <app-button
+      colorButton="accent"
+      text="More"
+      [routerLink]="['/watch', video.id]"></app-button>
   </mat-card-actions>
   <mat-card-footer> </mat-card-footer>
 </mat-card>

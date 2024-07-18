@@ -1,0 +1,49 @@
+<app-icon
+  class="icon-back"
+  fontIcon="arrow_back"
+  [routerLink]="['/']"></app-icon>
+<mat-card
+  *ngIf="video"
+  class="card"
+  appCardShadowColor
+  [publishTime]="video.snippet.publishedAt">
+  <div class="image">
+    <img
+      mat-card-image
+      src="{{ video.snippet.thumbnails.maxres.url }}"
+      alt="Photo" />
+  </div>
+  <div
+    class="card-item-wrapper"
+    appBorderBottom
+    [publishTime]="video.snippet.publishedAt">
+    <div class="card-item">
+      <div class="card-title">
+        <mat-card-title class="card-title">{{
+          video.snippet.title
+        }}</mat-card-title>
+        <div class="published-time">
+          {{ video.snippet.publishedAt | date: 'fullDate' }}
+        </div>
+      </div>
+      <mat-card-content class="card-content">
+        <div class="desc-title">Description:</div>
+        <div class="desc-text">{{ video.snippet.description }}</div>
+        <p class="statistics-icon">
+          <app-icon
+            fontIcon="remove_red_eye"
+            [text]="video.statistics.viewCount"></app-icon>
+          <app-icon
+            fontIcon="thumb_up"
+            [text]="video.statistics.likeCount"></app-icon>
+          <app-icon
+            fontIcon="thumb_down"
+            [text]="video.statistics.dislikeCount"></app-icon>
+          <app-icon
+            fontIcon="chat"
+            [text]="video.statistics.commentCount"></app-icon>
+        </p>
+      </mat-card-content>
+    </div>
+  </div>
+</mat-card>

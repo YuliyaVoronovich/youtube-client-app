@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ButtonComponent } from '@shared/components/button/button.component';
+import { AuthService } from '@features/auth/services/auth.service';
+import { Router } from '@angular/router';
+import { Routes } from '@core/models/route.model';
 import { UserInfoComponent } from '../user-info/user-info.component';
 import { LogoComponent } from '../logo/logo.component';
 import { SearchFormComponent } from '../search-form/search-form.component';
@@ -18,4 +21,14 @@ import { SearchFormComponent } from '../search-form/search-form.component';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {}
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate([Routes.Default]);
+  }
+}

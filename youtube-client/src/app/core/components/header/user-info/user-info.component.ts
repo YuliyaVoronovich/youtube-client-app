@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { IconComponent } from '@shared/components/icon/icon.component';
 
 @Component({
@@ -8,4 +8,10 @@ import { IconComponent } from '@shared/components/icon/icon.component';
   templateUrl: './user-info.component.html',
   styleUrl: './user-info.component.scss',
 })
-export class UserInfoComponent {}
+export class UserInfoComponent {
+  @Output() public readonly logout = new EventEmitter<string>();
+
+  emitLogout() {
+    this.logout.emit();
+  }
+}

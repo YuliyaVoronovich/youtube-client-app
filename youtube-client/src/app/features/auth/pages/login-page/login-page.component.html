@@ -1,0 +1,16 @@
+<form [formGroup]="loginForm" class="login-form" (submit)="login()">
+  <h2>Login</h2>
+
+  <mat-hint>Login</mat-hint>
+  <mat-form-field appearance="fill">
+    <input matInput formControlName="username" />
+  </mat-form-field>
+
+  <mat-hint>Password</mat-hint>
+  <mat-form-field appearance="fill">
+    <input matInput type="text" formControlName="password" />
+    <app-icon fontIcon="visibility" text=""></app-icon>
+  </mat-form-field>
+
+  <app-button colorButton="accent" text="Login"></app-button>
+</form>

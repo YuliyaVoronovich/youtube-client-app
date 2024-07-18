@@ -10,8 +10,8 @@ import { SearchResponse } from '../models/search-response.model';
 export class YoutubeApiService {
   constructor(private httpClient: HttpClient) {}
 
-  getVideos(search: string): Observable<Video[]> {
-    const params = new HttpParams().set('search', search);
+  getVideos(search?: string): Observable<Video[]> {
+    const params = search ? new HttpParams().set('search', search) : {};
 
     return this.httpClient
       .get<SearchResponse>('./assets/youtube-response.json', {

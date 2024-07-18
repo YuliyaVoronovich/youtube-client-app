@@ -5,11 +5,11 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class FilterService {
-  private showFiltersSubject = new BehaviorSubject<boolean>(false);
+  private showFilters$$ = new BehaviorSubject<boolean>(false);
 
-  public showFilters$: Observable<boolean> = this.showFiltersSubject;
+  public showFilters$: Observable<boolean> = this.showFilters$$;
 
   toggleShowFilter(): void {
-    this.showFiltersSubject.next(!this.showFiltersSubject.value);
+    this.showFilters$$.next(!this.showFilters$$.value);
   }
 }
