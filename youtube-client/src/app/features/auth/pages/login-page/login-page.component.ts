@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 import { Routes } from '@core/models/route.model';
 import { LoginFormValue } from '@features/auth/models/user.model';
 import { AuthService } from '@features/auth/services/auth.service';
+import { getPasswordStrengthError } from '@features/youtube/utils/password-error-msg';
 import { ButtonComponent } from '@shared/components/button/button.component';
 import { IconComponent } from '@shared/components/icon/icon.component';
 
@@ -71,29 +72,8 @@ export class LoginPageComponent {
         return null;
       }
 
-      this.passwordStrengthError = this.getPasswordStrengthError(control.value);
+      this.passwordStrengthError = getPasswordStrengthError(control.value);
       return this.passwordStrengthError ? { passwordStrength: true } : null;
     };
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  getPasswordStrengthError(password: string): string {
-    if (password.length < 8) {
-      return 'Use at least 8 characters';
-    }
-
-    if (!/[A-Z]/.test(password) || !/[a-z]/.test(password)) {
-      return 'Include a mixture of uppercase and lowercase letters';
-    }
-
-    if (!/[a-zA-Z]+.*\d+|\d+.*[a-zA-Z]+/.test(password)) {
-      return 'Include a mixture of letters and numbers';
-    }
-
-    if (!/[!@#$%^&*()\-_=+{};:,<.>/?[\]\\|`~]/.test(password)) {
-      return 'Include at least one special character (! @ # ?)';
-    }
-
-    return '';
   }
 }
