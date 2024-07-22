@@ -54,6 +54,10 @@ export class CardFormComponent {
 
   public isShowIconCreate = true;
 
+  constructor() {
+    this.addTag();
+  }
+
   // eslint-disable-next-line class-methods-use-this
   validateDate() {
     return (control: AbstractControl): ValidationErrors | null => {
@@ -65,8 +69,10 @@ export class CardFormComponent {
     };
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  createCard() {}
+  createCard() {
+    if (!this.createCardForm.valid) return;
+    console.warn('Create Card');
+  }
 
   get tags(): FormArray {
     return this.createCardForm.get('tags') as FormArray;
@@ -86,9 +92,5 @@ export class CardFormComponent {
       new FormArray([], Validators.required)
     );
     this.createCardForm.reset();
-
-    Object.keys(this.createCardForm.controls).forEach(key => {
-      this.createCardForm.get(key)?.setErrors(null);
-    });
   }
 }
