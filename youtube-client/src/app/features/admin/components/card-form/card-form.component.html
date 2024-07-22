@@ -53,6 +53,21 @@
       >The date is invalid</mat-error
     >
   </mat-form-field>
+  <div class="field-tags" formArrayName="tags">
+    <mat-hint>Tags</mat-hint>
+    <ng-container *ngFor="let tag of tags['controls']; let i = index">
+      <mat-form-field appearance="outline">
+        <input matInput formControlName="{{ i }}" />
+        <mat-error *ngIf="tag?.errors?.['required']">
+          Please enter a creation tag
+        </mat-error>
+      </mat-form-field>
+    </ng-container>
+    <app-icon
+      *ngIf="isShowIconCreate"
+      fontIcon="add"
+      (click)="addTag()"></app-icon>
+  </div>
 
   <app-button colorButton="primary" text="OK"></app-button>
 </form>

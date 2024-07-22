@@ -2,6 +2,7 @@ import { NgIf, NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import {
   AbstractControl,
+  FormArray,
   FormControl,
   FormGroup,
   ReactiveFormsModule,
@@ -48,7 +49,10 @@ export class CardFormComponent {
       Validators.required,
       this.validateDate(),
     ]),
+    tags: new FormArray([], Validators.required),
   });
+
+  public isShowIconCreate = true;
 
   // eslint-disable-next-line class-methods-use-this
   validateDate() {
@@ -63,4 +67,16 @@ export class CardFormComponent {
 
   // eslint-disable-next-line class-methods-use-this
   createCard() {}
+
+  get tags(): FormArray {
+    return this.createCardForm.get('tags') as FormArray;
+  }
+
+  protected addTag() {
+    if (this.tags.length < 5) {
+      this.tags.push(new FormControl('', Validators.required));
+    } else {
+      this.isShowIconCreate = false;
+    }
+  }
 }

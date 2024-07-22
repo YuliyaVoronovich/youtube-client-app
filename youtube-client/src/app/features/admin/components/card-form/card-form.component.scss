@@ -30,3 +30,9 @@ app-button {
 :host ::ng-deep .mat-mdc-extended-fab {
   width: 100px;
 }
+
+.field-tags {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
