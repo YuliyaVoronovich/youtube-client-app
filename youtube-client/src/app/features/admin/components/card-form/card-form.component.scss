@@ -1,0 +1,32 @@
+:host {
+  margin: 0 auto;
+
+  ::ng-deep .mat-mdc-form-field-infix {
+    display: flex;
+  }
+}
+
+.card-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: space-between;
+
+  width: 344px;
+  margin-top: 45px;
+  padding: 28px 20px 26px;
+
+  background: #fbefee;
+  border-radius: 5px;
+  box-shadow: 0 0 9px 0 #9f9998;
+}
+
+app-button {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+:host ::ng-deep .mat-mdc-extended-fab {
+  width: 100px;
+}

@@ -1,0 +1,58 @@
+<form [formGroup]="createCardForm" (submit)="createCard()" class="card-form">
+  <h3>Create new card</h3>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Title</mat-label>
+    <input matInput formControlName="title" type="text" />
+    <mat-error *ngIf="createCardForm.controls.title.hasError('required')"
+      >Please enter a title</mat-error
+    >
+    <mat-error *ngIf="createCardForm.controls.title.hasError('minlength')"
+      >The title is too short</mat-error
+    >
+    <mat-error *ngIf="createCardForm.controls.title.hasError('maxlength')"
+      >The title is too long</mat-error
+    >
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Description</mat-label>
+    <input matInput type="text" formControlName="description" />
+    <mat-error *ngIf="createCardForm.controls.description.hasError('maxlength')"
+      >The description is too long</mat-error
+    >
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Img</mat-label>
+    <input matInput type="text" formControlName="imageUrl" />
+    <mat-error *ngIf="createCardForm.controls.imageUrl.hasError('required')"
+      >Please enter a link to the image</mat-error
+    >
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Link video</mat-label>
+    <input matInput type="text" formControlName="videoLink" />
+    <mat-error *ngIf="createCardForm.controls.videoLink.hasError('required')"
+      >Please enter a link to the</mat-error
+    >
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Creation date</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="creationDate" />
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-error *ngIf="createCardForm.controls.creationDate.hasError('required')"
+      >Please enter a creation date</mat-error
+    >
+    <mat-error
+      *ngIf="createCardForm.controls.creationDate.hasError('dateError')"
+      >The date is invalid</mat-error
+    >
+  </mat-form-field>
+
+  <app-button colorButton="primary" text="OK"></app-button>
+</form>

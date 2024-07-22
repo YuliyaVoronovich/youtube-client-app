@@ -27,5 +27,12 @@ export const routes: Routes = [
         m => m.LoginPageComponent
       ),
   },
+  {
+    path: 'admin',
+    loadComponent: () =>
+      import('@features/admin/pages/admin-page/admin-page.component').then(
+        m => m.AdminPageComponent
+      ),
+  },
   { path: '**', component: NotFoundPageComponent },
 ];

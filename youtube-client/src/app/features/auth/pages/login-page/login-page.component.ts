@@ -1,4 +1,4 @@
-import { CommonModule, NgFor, NgIf } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import {
   AbstractControl,
@@ -8,7 +8,7 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms';
-import { MatError, MatFormField, MatHint } from '@angular/material/form-field';
+import { MatError, MatFormField } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
@@ -23,10 +23,8 @@ import { IconComponent } from '@shared/components/icon/icon.component';
   selector: 'app-login-page',
   standalone: true,
   imports: [
-    CommonModule,
     MatFormField,
     MatIcon,
-    MatHint,
     MatError,
     ReactiveFormsModule,
     MatInputModule,
