@@ -68,6 +68,11 @@
       fontIcon="add"
       (click)="addTag()"></app-icon>
   </div>
-
-  <app-button colorButton="primary" text="OK"></app-button>
+  <div class="btns">
+    <app-button
+      colorButton="accent"
+      text="Reset"
+      (click)="resetForm()"></app-button>
+    <app-button colorButton="primary" text="Create"></app-button>
+  </div>
 </form>

@@ -72,11 +72,23 @@ export class CardFormComponent {
     return this.createCardForm.get('tags') as FormArray;
   }
 
-  protected addTag() {
+  addTag() {
     if (this.tags.length < 5) {
       this.tags.push(new FormControl('', Validators.required));
     } else {
       this.isShowIconCreate = false;
     }
+  }
+
+  resetForm() {
+    this.createCardForm.setControl(
+      'tags',
+      new FormArray([], Validators.required)
+    );
+    this.createCardForm.reset();
+
+    Object.keys(this.createCardForm.controls).forEach(key => {
+      this.createCardForm.get(key)?.setErrors(null);
+    });
   }
 }

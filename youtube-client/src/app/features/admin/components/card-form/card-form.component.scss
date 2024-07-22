@@ -36,3 +36,8 @@ app-button {
   flex-direction: column;
   gap: 4px;
 }
+
+.btns {
+  display: flex;
+  justify-content: space-between;
+}
