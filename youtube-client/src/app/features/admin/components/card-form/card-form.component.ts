@@ -69,10 +69,7 @@ export class CardFormComponent {
   }
 
   resetForm() {
-    this.createCardForm.setControl(
-      'tags',
-      new FormArray([], Validators.required)
-    );
+    this.tags.clear();
     this.createCardForm.reset();
   }
 }
