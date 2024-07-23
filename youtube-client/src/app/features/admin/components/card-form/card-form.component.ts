@@ -14,6 +14,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ButtonComponent } from '@shared/components/button/button.component';
 import { IconComponent } from '@shared/components/icon/icon.component';
 import { validateDate } from '@features/youtube/utils/date.validator';
+import { ErrorComponent } from '@shared/components/error/error.component';
+import { CUSTOM_ERRORS } from '@shared/tokens/custom-error.token';
+import { errors } from '@shared/constants/error.constant';
 
 @Component({
   selector: 'app-card-form',
@@ -30,9 +33,16 @@ import { validateDate } from '@features/youtube/utils/date.validator';
     ButtonComponent,
     NgIf,
     NgFor,
+    ErrorComponent,
   ],
   templateUrl: './card-form.component.html',
   styleUrl: './card-form.component.scss',
+  providers: [
+    {
+      provide: CUSTOM_ERRORS,
+      useValue: errors,
+    },
+  ],
 })
 export class CardFormComponent {
   public createCardForm = this.formBuilder.group({
@@ -43,7 +53,10 @@ export class CardFormComponent {
     description: ['', [Validators.maxLength(255)]],
     imageUrl: ['', [Validators.required]],
     videoLink: ['', [Validators.required]],
-    creationDate: ['', [Validators.required, validateDate()]],
+    creationDate: [
+      '',
+      [Validators.required, validateDate('The date is invalid')],
+    ],
     tags: new FormArray([], Validators.required),
   });
 

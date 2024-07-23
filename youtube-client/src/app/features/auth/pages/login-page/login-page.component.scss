@@ -18,6 +18,10 @@
   background: #fbefee;
   border-radius: 5px;
   box-shadow: 0 0 9px 0 #9f9998;
+
+  .mat-mdc-form-field {
+    margin-top: 10px;
+  }
 }
 
 app-button {

@@ -16,7 +16,10 @@ import { LoginFormValue } from '@features/auth/models/user.model';
 import { AuthService } from '@features/auth/services/auth.service';
 import { validatePasswordStrength } from '@features/youtube/utils/password-error-msg';
 import { ButtonComponent } from '@shared/components/button/button.component';
+import { ErrorComponent } from '@shared/components/error/error.component';
 import { IconComponent } from '@shared/components/icon/icon.component';
+import { errors } from '@shared/constants/error.constant';
+import { CUSTOM_ERRORS } from '@shared/tokens/custom-error.token';
 
 @Component({
   selector: 'app-login-page',
@@ -31,9 +34,16 @@ import { IconComponent } from '@shared/components/icon/icon.component';
     ButtonComponent,
     NgIf,
     NgFor,
+    ErrorComponent,
   ],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss',
+  providers: [
+    {
+      provide: CUSTOM_ERRORS,
+      useValue: errors,
+    },
+  ],
 })
 export class LoginPageComponent {
   public loginForm = this.formBuilder.group({
@@ -68,7 +78,9 @@ export class LoginPageComponent {
       }
 
       this.passwordStrengthError = validatePasswordStrength(control.value);
-      return this.passwordStrengthError ? { passwordStrength: true } : null;
+      return this.passwordStrengthError
+        ? { passwordStrength: this.passwordStrengthError }
+        : null;
     };
   }
 }
