@@ -1,4 +1,4 @@
-export function getPasswordStrengthError(password: string): string {
+export function validatePasswordStrength(password: string): string {
   if (password.length < 8) {
     return 'Use at least 8 characters';
   }

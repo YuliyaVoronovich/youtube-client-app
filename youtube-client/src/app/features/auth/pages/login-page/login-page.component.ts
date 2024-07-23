@@ -2,8 +2,7 @@ import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import {
   AbstractControl,
-  FormControl,
-  FormGroup,
+  FormBuilder,
   ReactiveFormsModule,
   ValidationErrors,
   Validators,
@@ -15,7 +14,7 @@ import { Router } from '@angular/router';
 import { Routes } from '@core/models/route.model';
 import { LoginFormValue } from '@features/auth/models/user.model';
 import { AuthService } from '@features/auth/services/auth.service';
-import { getPasswordStrengthError } from '@features/youtube/utils/password-error-msg';
+import { validatePasswordStrength } from '@features/youtube/utils/password-error-msg';
 import { ButtonComponent } from '@shared/components/button/button.component';
 import { IconComponent } from '@shared/components/icon/icon.component';
 
@@ -37,19 +36,17 @@ import { IconComponent } from '@shared/components/icon/icon.component';
   styleUrl: './login-page.component.scss',
 })
 export class LoginPageComponent {
-  public loginForm = new FormGroup({
-    username: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [
-      Validators.required,
-      this.customPasswordValidator(),
-    ]),
+  public loginForm = this.formBuilder.group({
+    username: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, this.getPasswordValidator()]],
   });
 
   public passwordStrengthError: string = '';
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private formBuilder: FormBuilder
   ) {}
 
   public login() {
@@ -62,7 +59,7 @@ export class LoginPageComponent {
     }
   }
 
-  private customPasswordValidator() {
+  private getPasswordValidator() {
     return (control: AbstractControl): ValidationErrors | null => {
       const { value } = control;
 
@@ -70,7 +67,7 @@ export class LoginPageComponent {
         return null;
       }
 
-      this.passwordStrengthError = getPasswordStrengthError(control.value);
+      this.passwordStrengthError = validatePasswordStrength(control.value);
       return this.passwordStrengthError ? { passwordStrength: true } : null;
     };
   }

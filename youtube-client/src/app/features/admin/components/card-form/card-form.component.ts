@@ -1,12 +1,10 @@
 import { NgIf, NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import {
-  AbstractControl,
   FormArray,
+  FormBuilder,
   FormControl,
-  FormGroup,
   ReactiveFormsModule,
-  ValidationErrors,
   Validators,
 } from '@angular/forms';
 import { MatFormField, MatError } from '@angular/material/form-field';
@@ -15,6 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ButtonComponent } from '@shared/components/button/button.component';
 import { IconComponent } from '@shared/components/icon/icon.component';
+import { validateDate } from '@features/youtube/utils/date.validator';
 
 @Component({
   selector: 'app-card-form',
@@ -36,38 +35,21 @@ import { IconComponent } from '@shared/components/icon/icon.component';
   styleUrl: './card-form.component.scss',
 })
 export class CardFormComponent {
-  public createCardForm = new FormGroup({
-    title: new FormControl('', [
-      Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(20),
-    ]),
-    description: new FormControl('', [Validators.maxLength(255)]),
-    imageUrl: new FormControl('', [Validators.required]),
-    videoLink: new FormControl('', [Validators.required]),
-    creationDate: new FormControl('', [
-      Validators.required,
-      this.validateDate(),
-    ]),
+  public createCardForm = this.formBuilder.group({
+    title: [
+      '',
+      [Validators.required, Validators.minLength(3), Validators.maxLength(20)],
+    ],
+    description: ['', [Validators.maxLength(255)]],
+    imageUrl: ['', [Validators.required]],
+    videoLink: ['', [Validators.required]],
+    creationDate: ['', [Validators.required, validateDate()]],
     tags: new FormArray([], Validators.required),
   });
 
   public isShowIconCreate = true;
 
-  constructor() {
-    this.addTag();
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  validateDate() {
-    return (control: AbstractControl): ValidationErrors | null => {
-      const date = control.value;
-      if (!date) {
-        return null;
-      }
-      return date > new Date() ? { dateError: true } : null;
-    };
-  }
+  constructor(private formBuilder: FormBuilder) {}
 
   createCard() {
     if (!this.createCardForm.valid) return;
