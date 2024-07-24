@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import {
   FormArray,
   FormBuilder,
-  FormControl,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
@@ -57,7 +56,7 @@ export class CardFormComponent {
       '',
       [Validators.required, validateDate('The date is invalid')],
     ],
-    tags: new FormArray([], Validators.required),
+    tags: this.formBuilder.array([], Validators.required),
   });
 
   public isShowIconCreate = true;
@@ -75,7 +74,7 @@ export class CardFormComponent {
 
   addTag() {
     if (this.tags.length < 5) {
-      this.tags.push(new FormControl('', Validators.required));
+      this.tags.push(this.formBuilder.control('', Validators.required));
     } else {
       this.isShowIconCreate = false;
     }
