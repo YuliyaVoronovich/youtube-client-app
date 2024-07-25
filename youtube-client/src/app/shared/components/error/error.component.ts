@@ -36,20 +36,18 @@ export class ErrorComponent implements ControlValueAccessor, OnInit {
       .pipe(takeUntilDestroyed(this.destroy))
       .subscribe(() => {
         const { control } = this.control;
+        const errors = control?.errors;
 
         if (this.computedInvalid) {
-          let error: string = '';
+          let error = '';
 
-          const firstErrorKey = Object.keys(control?.errors ?? {})[0];
-          if (firstErrorKey) {
-            error = this.errorMap[firstErrorKey];
+          if (errors) {
+            const [firstErrorKey, firstErrorValue] =
+              Object.entries(errors)[0] || [];
+            error = this.errorMap[firstErrorKey] || firstErrorValue;
           }
 
-          if (!error) {
-            error = Object.values(control?.errors ?? {})[0] ?? '';
-          }
-
-          this.error.set(error || '');
+          this.error.set(error);
         } else {
           this.error.set('');
         }

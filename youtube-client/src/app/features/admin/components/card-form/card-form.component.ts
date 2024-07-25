@@ -12,10 +12,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ButtonComponent } from '@shared/components/button/button.component';
 import { IconComponent } from '@shared/components/icon/icon.component';
-import { validateDate } from '@features/youtube/utils/date.validator';
+import { getDateValidator } from '@features/youtube/utils/date.validator';
 import { ErrorComponent } from '@shared/components/error/error.component';
 import { CUSTOM_ERRORS } from '@shared/tokens/custom-error.token';
-import { errors } from '@shared/constants/error.constant';
+import { errors } from '@shared/constants/built-in-errors.constant';
 
 @Component({
   selector: 'app-card-form',
@@ -54,7 +54,7 @@ export class CardFormComponent {
     videoLink: ['', [Validators.required]],
     creationDate: [
       '',
-      [Validators.required, validateDate('The date is invalid')],
+      [Validators.required, getDateValidator('The date is invalid')],
     ],
     tags: this.formBuilder.array([], Validators.required),
   });

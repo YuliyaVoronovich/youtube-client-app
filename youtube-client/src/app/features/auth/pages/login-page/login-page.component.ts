@@ -1,12 +1,6 @@
 import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
-import {
-  AbstractControl,
-  FormBuilder,
-  ReactiveFormsModule,
-  ValidationErrors,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatError, MatFormField } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -14,11 +8,11 @@ import { Router } from '@angular/router';
 import { Routes } from '@core/models/route.model';
 import { LoginFormValue } from '@features/auth/models/user.model';
 import { AuthService } from '@features/auth/services/auth.service';
-import { validatePasswordStrength } from '@features/youtube/utils/password-error-msg';
+import { getPasswordValidator } from '@features/youtube/utils/password.validator';
 import { ButtonComponent } from '@shared/components/button/button.component';
 import { ErrorComponent } from '@shared/components/error/error.component';
 import { IconComponent } from '@shared/components/icon/icon.component';
-import { errors } from '@shared/constants/error.constant';
+import { errors } from '@shared/constants/built-in-errors.constant';
 import { CUSTOM_ERRORS } from '@shared/tokens/custom-error.token';
 
 @Component({
@@ -48,10 +42,8 @@ import { CUSTOM_ERRORS } from '@shared/tokens/custom-error.token';
 export class LoginPageComponent {
   public loginForm = this.formBuilder.group({
     username: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, this.getPasswordValidator()]],
+    password: ['', [Validators.required, getPasswordValidator()]],
   });
-
-  public passwordStrengthError: string = '';
 
   constructor(
     private authService: AuthService,
@@ -67,20 +59,5 @@ export class LoginPageComponent {
       this.authService.login(username);
       this.router.navigate([Routes.Main]);
     }
-  }
-
-  private getPasswordValidator() {
-    return (control: AbstractControl): ValidationErrors | null => {
-      const { value } = control;
-
-      if (!value) {
-        return null;
-      }
-
-      this.passwordStrengthError = validatePasswordStrength(control.value);
-      return this.passwordStrengthError
-        ? { passwordStrength: this.passwordStrengthError }
-        : null;
-    };
   }
 }

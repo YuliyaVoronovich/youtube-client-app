@@ -1,4 +1,6 @@
-export function validatePasswordStrength(password: string): string {
+import { AbstractControl, ValidationErrors } from '@angular/forms';
+
+function validatePasswordStrength(password: string): string {
   if (password.length < 8) {
     return 'Use at least 8 characters';
   }
@@ -16,4 +18,17 @@ export function validatePasswordStrength(password: string): string {
   }
 
   return '';
+}
+
+export function getPasswordValidator() {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const { value } = control;
+
+    if (!value) {
+      return null;
+    }
+
+    const passwordStrength = validatePasswordStrength(value);
+    return passwordStrength ? { passwordStrength } : null;
+  };
 }
