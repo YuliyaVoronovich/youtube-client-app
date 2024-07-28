@@ -10,6 +10,8 @@ const KEY_USER_TOKEN = 'fakeUserToken';
 export class AuthService {
   private readonly isLoginned$$ = new BehaviorSubject(this.getAuthStatus());
 
+  public isLoginned$ = this.isLoginned$$.pipe();
+
   constructor(private localStorage: LocalStorageService) {}
 
   public isLoginned(): boolean {
