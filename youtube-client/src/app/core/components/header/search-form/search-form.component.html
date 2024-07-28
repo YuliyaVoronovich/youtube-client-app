@@ -4,12 +4,9 @@
       matInput
       type="search"
       [(ngModel)]="searchValue"
-      [ngModelOptions]="{ standalone: true }" />
+      [ngModelOptions]="{ standalone: true }"
+      (input)="getResult(searchValue)" />
   </mat-form-field>
-  <app-button
-    colorButton="primary"
-    text="Search"
-    (click)="getResult(searchValue)"></app-button>
   <app-button
     *ngIf="isShowButtonSettings()"
     colorButton="accent"
