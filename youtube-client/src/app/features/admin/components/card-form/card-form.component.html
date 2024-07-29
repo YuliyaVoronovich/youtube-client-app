@@ -1,0 +1,56 @@
+<form [formGroup]="createCardForm" (submit)="createCard()" class="card-form">
+  <h3>Create new card</h3>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Title</mat-label>
+    <input matInput formControlName="title" type="text" />
+  </mat-form-field>
+  <app-error formControlName="title"></app-error>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Description</mat-label>
+    <input matInput type="text" formControlName="description" />
+  </mat-form-field>
+  <app-error formControlName="description"></app-error>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Img</mat-label>
+    <input matInput type="text" formControlName="imageUrl" />
+  </mat-form-field>
+  <app-error formControlName="imageUrl"></app-error>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Link video</mat-label>
+    <input matInput type="text" formControlName="videoLink" />
+  </mat-form-field>
+  <app-error formControlName="videoLink"></app-error>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Creation date</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="creationDate" />
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <app-error formControlName="creationDate"></app-error>
+  <div class="field-tags" formArrayName="tags">
+    <mat-hint>Tags</mat-hint>
+    <ng-container *ngFor="let tag of tags['controls']; let i = index">
+      <mat-form-field appearance="outline">
+        <input matInput formControlName="{{ i }}" />
+      </mat-form-field>
+      <app-error formControlName="{{ i }}"></app-error>
+    </ng-container>
+    <app-icon
+      *ngIf="isShowIconCreate"
+      fontIcon="add"
+      (click)="addTag()"></app-icon>
+  </div>
+  <div class="btns">
+    <app-button
+      colorButton="accent"
+      text="Reset"
+      (click)="resetForm()"></app-button>
+    <app-button colorButton="primary" text="Create"></app-button>
+  </div>
+</form>
