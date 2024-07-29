@@ -36,7 +36,7 @@ export interface Thumbnails {
   medium: ThumbnailInfo;
   high: ThumbnailInfo;
   standard: ThumbnailInfo;
-  maxres: ThumbnailInfo;
+  maxres?: ThumbnailInfo;
 }
 
 export interface Localized {

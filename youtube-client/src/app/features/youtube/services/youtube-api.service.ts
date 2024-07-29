@@ -1,8 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, forkJoin, map, switchMap } from 'rxjs';
+import { Observable, map, switchMap } from 'rxjs';
 import { Video } from '../models/search-item.model';
 import { SearchResponse } from '../models/search-response.model';
+import { Endpoint } from '../models/endpoint-youtube.model';
 
 const BASE_API_URL = 'https://youtube.googleapis.com/youtube/v3';
 
@@ -19,36 +20,27 @@ export class YoutubeApiService {
           .set('part', 'snippet')
           .set('maxResults', '10')
           .set('q', search)
-      : {};
+      : new HttpParams();
 
     return this.httpClient
-      .get<SearchResponse>(`${BASE_API_URL}/search`, {
+      .get<SearchResponse>(`${BASE_API_URL}${Endpoint.Search}`, {
         params,
       })
       .pipe(
-        switchMap(response =>
-          forkJoin(
-            response.items.map(item =>
-              this.getVideoById(item.id.videoId).pipe(
-                map(videoResponse => ({
-                  ...item,
-                  statistics: videoResponse.statistics,
-                }))
-              )
-            )
-          )
-        )
+        map(response => response.items.map(item => item.id.videoId).join(',')),
+        switchMap(idString => this.getVideoById(idString))
       );
   }
 
-  getVideoById(videoId: string): Observable<Video> {
+  getVideoById(videoId: string): Observable<Video[]> {
     const params = new HttpParams()
       .set('part', 'snippet,statistics')
       .set('id', videoId);
+
     return this.httpClient
-      .get<SearchResponse>(`${BASE_API_URL}/videos`, {
+      .get<SearchResponse>(`${BASE_API_URL}${Endpoint.Videos}`, {
         params,
       })
-      .pipe(map(response => response.items[0]));
+      .pipe(map(response => response.items));
   }
 }

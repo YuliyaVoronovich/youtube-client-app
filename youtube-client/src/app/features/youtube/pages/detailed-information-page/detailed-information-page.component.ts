@@ -41,7 +41,7 @@ export class DetailedInformationPageComponent implements OnInit, OnDestroy {
           return this.searchService.getVideoById(params['id']);
         })
       )
-      .subscribe(video => {
+      .subscribe(([video]) => {
         this.video = video;
       });
   }
