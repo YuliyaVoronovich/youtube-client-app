@@ -28,11 +28,11 @@ export class YoutubeApiService {
       })
       .pipe(
         map(response => response.items.map(item => item.id.videoId).join(',')),
-        switchMap(idString => this.getVideoById(idString))
+        switchMap(videoIds => this.getVideosByIds(videoIds))
       );
   }
 
-  getVideoById(videoId: string): Observable<Video[]> {
+  getVideosByIds(videoId: string): Observable<Video[]> {
     const params = new HttpParams()
       .set('part', 'snippet,statistics')
       .set('id', videoId);
