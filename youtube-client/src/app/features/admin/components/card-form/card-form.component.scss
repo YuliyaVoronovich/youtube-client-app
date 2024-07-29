@@ -6,7 +6,7 @@
   }
 }
 
-.login-form {
+.card-form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -32,4 +32,15 @@ app-button {
 
 :host ::ng-deep .mat-mdc-extended-fab {
   width: 100px;
+}
+
+.field-tags {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.btns {
+  display: flex;
+  justify-content: space-between;
 }
