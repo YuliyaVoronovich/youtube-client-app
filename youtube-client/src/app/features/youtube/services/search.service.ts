@@ -31,7 +31,7 @@ export class SearchService {
     this.searchString$$.next(value);
   }
 
-  getVideoById() {
-    return this.youtubeApiService.getVideos();
+  getVideoById(videoId: string) {
+    return this.youtubeApiService.getVideoById(videoId);
   }
 }

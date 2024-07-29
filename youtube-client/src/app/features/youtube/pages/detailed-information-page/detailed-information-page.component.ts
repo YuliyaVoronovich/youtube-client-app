@@ -7,7 +7,7 @@ import { CardShadowColorDirective } from '@features/youtube/directives/card-shad
 import { Video } from '@features/youtube/models/search-item.model';
 import { SearchService } from '@features/youtube/services/search.service';
 import { IconComponent } from '@shared/components/icon/icon.component';
-import { map, Subscription, switchMap } from 'rxjs';
+import { Subscription, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-detailed-information-page',
@@ -38,13 +38,7 @@ export class DetailedInformationPageComponent implements OnInit, OnDestroy {
     this.routeSub = this.route.params
       .pipe(
         switchMap(params => {
-          return this.searchService
-            .getVideoById()
-            .pipe(
-              map((videos: Video[]) =>
-                videos.find(video => video.id === params['id'])
-              )
-            );
+          return this.searchService.getVideoById(params['id']);
         })
       )
       .subscribe(video => {
