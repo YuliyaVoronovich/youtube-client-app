@@ -5,7 +5,7 @@ import { Video } from '../models/search-item.model';
 import { SearchResponse } from '../models/search-response.model';
 import { Endpoint } from '../models/endpoint-youtube.model';
 
-const BASE_API_URL = 'https://youtube.googleapis.com/youtube/v3';
+const BASE_API_URL = import.meta.env.NG_APP_BASE_API_URL;
 
 @Injectable({
   providedIn: 'root',

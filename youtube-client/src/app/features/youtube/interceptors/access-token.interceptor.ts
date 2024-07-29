@@ -8,7 +8,7 @@ import {
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-const YOUTUBE_API_KEY = 'AIzaSyAwc2x2pfDH7j3DjDbTKR0h0uAkU288ny4';
+const YOUTUBE_API_KEY = import.meta.env.NG_APP_YOUTUBE_API_KEY;
 
 @Injectable()
 export class AccessTokenInterceptor implements HttpInterceptor {
