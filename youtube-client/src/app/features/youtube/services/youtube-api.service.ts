@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable, map, switchMap } from 'rxjs';
 import { Video } from '../models/search-item.model';
 import { SearchResponse } from '../models/search-response.model';
-import { Endpoint } from '../models/endpoint-youtube.model';
 
 const BASE_API_URL = import.meta.env.NG_APP_BASE_API_URL;
 
@@ -17,13 +16,12 @@ export class YoutubeApiService {
     const params = search
       ? new HttpParams()
           .set('type', 'video')
-          .set('part', 'snippet')
           .set('maxResults', '10')
           .set('q', search)
       : new HttpParams();
 
     return this.httpClient
-      .get<SearchResponse>(`${BASE_API_URL}${Endpoint.Search}`, {
+      .get<SearchResponse>(`${BASE_API_URL}/search`, {
         params,
       })
       .pipe(
@@ -38,7 +36,7 @@ export class YoutubeApiService {
       .set('id', videoId);
 
     return this.httpClient
-      .get<SearchResponse>(`${BASE_API_URL}${Endpoint.Videos}`, {
+      .get<SearchResponse>(`${BASE_API_URL}/videos`, {
         params,
       })
       .pipe(map(response => response.items));

@@ -1,6 +1,6 @@
 import { NgIf } from '@angular/common';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { NavigationEnd, Router } from '@angular/router';
@@ -18,6 +18,7 @@ import { Subscription } from 'rxjs';
     MatInputModule,
     FormsModule,
     ButtonComponent,
+    ReactiveFormsModule,
     NgIf,
   ],
   templateUrl: './search-form.component.html',
@@ -29,6 +30,8 @@ export class SearchFormComponent implements OnInit, OnDestroy {
   private currentUrl: string = '';
 
   private routerSubscription!: Subscription;
+
+  protected searchText = new FormControl('');
 
   constructor(
     private filterService: FilterService,
@@ -54,8 +57,9 @@ export class SearchFormComponent implements OnInit, OnDestroy {
     );
   }
 
-  getResult(value: string) {
-    this.searchService.searchVideos(value);
+  getResult() {
+    if (!this.searchText.value) return;
+    this.searchService.searchVideos(this.searchText.value);
     this.router.navigate(['/']);
   }
 

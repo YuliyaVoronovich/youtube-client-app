@@ -1,11 +1,6 @@
 <form action="" class="search-form">
-  <mat-form-field appearance="fill" class="search-input">
-    <input
-      matInput
-      type="search"
-      [(ngModel)]="searchValue"
-      [ngModelOptions]="{ standalone: true }"
-      (input)="getResult(searchValue)" />
+  <mat-form-field appearance="fill" class="search-input" (input)="getResult()">
+    <input matInput type="search" [formControl]="searchText" />
   </mat-form-field>
   <app-button
     *ngIf="isShowButtonSettings()"
