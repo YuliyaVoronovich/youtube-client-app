@@ -1,10 +1,11 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map, switchMap } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Video } from '../models/search-item.model';
 import { SearchResponse } from '../models/search-response.model';
 
-const BASE_API_URL = import.meta.env.NG_APP_BASE_API_URL;
+const { BASE_API_URL } = environment;
 
 @Injectable({
   providedIn: 'root',
