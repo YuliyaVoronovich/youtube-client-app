@@ -19,7 +19,12 @@
       ],
       "rules": {
         "@typescript-eslint/no-explicit-any": "error",
-        "class-methods-use-this": ["error", { "exceptMethods": ["transform"] }],
+        "class-methods-use-this": [
+          "error",
+          {
+            "exceptMethods": ["transform", "intercept"]
+          }
+        ],
         "@angular-eslint/directive-selector": [
           "error",
           {

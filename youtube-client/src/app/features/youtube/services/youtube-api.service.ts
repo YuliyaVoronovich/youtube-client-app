@@ -6,6 +6,7 @@ import { Video } from '../models/search-item.model';
 import { SearchResponse } from '../models/search-response.model';
 
 const { BASE_API_URL } = environment;
+const COUNT_LIMIT = 10;
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,7 @@ export class YoutubeApiService {
     const params = search
       ? new HttpParams()
           .set('type', 'video')
-          .set('maxResults', '10')
+          .set('maxResults', COUNT_LIMIT)
           .set('q', search)
       : new HttpParams();
 

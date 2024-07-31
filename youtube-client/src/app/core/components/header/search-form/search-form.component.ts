@@ -45,6 +45,12 @@ export class SearchFormComponent implements OnInit, OnDestroy {
         this.currentUrl = event.url;
       }
     });
+
+    this.searchText.valueChanges.subscribe(value => {
+      if (!value) return;
+      this.searchService.searchVideos(value);
+      this.router.navigate(['/']);
+    });
   }
 
   ngOnDestroy() {
@@ -55,12 +61,6 @@ export class SearchFormComponent implements OnInit, OnDestroy {
     return (
       this.currentUrl === Routes.Default || this.currentUrl === Routes.Main
     );
-  }
-
-  getResult() {
-    if (!this.searchText.value) return;
-    this.searchService.searchVideos(this.searchText.value);
-    this.router.navigate(['/']);
   }
 
   toggleFilters() {
