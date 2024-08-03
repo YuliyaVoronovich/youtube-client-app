@@ -19,4 +19,11 @@ import { IconComponent } from '@shared/components/icon/icon.component';
 })
 export class SearchItemComponent {
   @Input({ required: true }) video!: Video;
+
+  get videoId(): string {
+    if (typeof this.video.id === 'object') {
+      return this.video.id.videoId;
+    }
+    return this.video.id;
+  }
 }

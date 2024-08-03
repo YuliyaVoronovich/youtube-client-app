@@ -1,7 +1,9 @@
 export interface Video {
   kind: string;
   etag: string;
-  id: string;
+  id: {
+    videoId: string;
+  };
   snippet: Snippet;
   statistics: Statistics;
 }
@@ -34,7 +36,7 @@ export interface Thumbnails {
   medium: ThumbnailInfo;
   high: ThumbnailInfo;
   standard: ThumbnailInfo;
-  maxres: ThumbnailInfo;
+  maxres?: ThumbnailInfo;
 }
 
 export interface Localized {
