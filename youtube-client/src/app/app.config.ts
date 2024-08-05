@@ -15,8 +15,14 @@ import {
 } from '@angular/common/http';
 import { AccessTokenInterceptor } from '@features/youtube/interceptors/access-token.interceptor';
 import { provideState, provideStore } from '@ngrx/store';
+import { provideEffects } from '@ngrx/effects';
+import { YoutubeEffects } from '@store/effects/youtube.effect';
 import { routes } from './app.routes';
 import { cardFeatureKey, CardReducer } from './store/reducers/card.reducer';
+import {
+  yotubeFeatureKey,
+  YoutubeReducer,
+} from './store/reducers/youtube.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -31,9 +37,11 @@ export const appConfig: ApplicationConfig = {
     },
     provideStore(),
     provideState({ name: cardFeatureKey, reducer: CardReducer }),
+    provideState({ name: yotubeFeatureKey, reducer: YoutubeReducer }),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: !isDevMode(),
     }),
+    provideEffects(YoutubeEffects),
   ],
 };

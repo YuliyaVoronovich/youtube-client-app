@@ -22,6 +22,9 @@ import * as CardActions from '@store/actions/card.actions';
 import { CustomCard } from '@store/state.model';
 import { MatNativeDateModule } from '@angular/material/core';
 import { generateRandomString } from '@features/youtube/utils/random-string';
+import { Router } from '@angular/router';
+import { Routes } from '@core/models/route.model';
+import { VideoType } from '@features/youtube/models/type-video.model';
 
 @Component({
   selector: 'app-card-form',
@@ -70,7 +73,8 @@ export class CardFormComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private store: Store
+    private store: Store,
+    private router: Router
   ) {}
 
   createCard() {
@@ -83,9 +87,11 @@ export class CardFormComponent {
         payload: {
           ...(this.createCardForm.value as CustomCard),
           id,
+          type: VideoType.Card,
         },
       })
     );
+    this.router.navigate([Routes.Default]);
   }
 
   get tags(): FormArray {

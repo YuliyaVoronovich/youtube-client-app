@@ -1,11 +1,12 @@
 <div class="search-results" *ngIf="videosLength$">
-  <div
-    *ngFor="
-      let video of videos$
-        | async
-        | filter: filterValue
-        | sort: sortType : orderType
-    ">
-    <app-search-item [video]="video"></app-search-item>
-  </div>
+  <ng-container *ngFor="let item of videos$ | async">
+    <app-custom-card *ngIf="isCustomCard(item)" [card]="item"></app-custom-card>
+    <ng-container *ngIf="!isCustomCard(item)">
+      <app-search-item
+        *ngFor="
+          let video of [item] | filter: filterValue | sort: sortType : orderType
+        "
+        [video]="video"></app-search-item>
+    </ng-container>
+  </ng-container>
 </div>

@@ -7,8 +7,10 @@ import { NavigationEnd, Router } from '@angular/router';
 import { Routes } from '@core/models/route.model';
 import { FilterService } from '@features/youtube/services/filter.service';
 import { SearchService } from '@features/youtube/services/search.service';
+import { Store } from '@ngrx/store';
 import { ButtonComponent } from '@shared/components/button/button.component';
-import { Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, Subscription } from 'rxjs';
+import * as YoutubeAction from '@store/actions/youtube.actions';
 
 @Component({
   selector: 'app-search-form',
@@ -31,12 +33,15 @@ export class SearchFormComponent implements OnInit, OnDestroy {
 
   private routerSubscription!: Subscription;
 
-  protected searchText = new FormControl('');
+  private searchSubscription!: Subscription;
+
+  protected searchText = new FormControl('', { nonNullable: true });
 
   constructor(
     private filterService: FilterService,
     private searchService: SearchService,
-    private router: Router
+    private router: Router,
+    private store: Store
   ) {}
 
   ngOnInit() {
@@ -46,15 +51,20 @@ export class SearchFormComponent implements OnInit, OnDestroy {
       }
     });
 
-    this.searchText.valueChanges.subscribe(value => {
-      if (!value) return;
-      this.searchService.searchVideos(value);
-      this.router.navigate(['/']);
-    });
+    this.searchSubscription = this.searchText.valueChanges
+      .pipe(
+        debounceTime(1000),
+        distinctUntilChanged(),
+        filter(value => value.length >= 3)
+      )
+      .subscribe(searchQuery => {
+        this.store.dispatch(YoutubeAction.changeQuery({ searchQuery }));
+      });
   }
 
   ngOnDestroy() {
     this.routerSubscription.unsubscribe();
+    this.searchSubscription.unsubscribe();
   }
 
   isShowButtonSettings() {

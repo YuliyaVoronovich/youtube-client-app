@@ -6,7 +6,7 @@ import { Video } from '../models/search-item.model';
 import { SearchResponse } from '../models/search-response.model';
 
 const { BASE_API_URL } = environment;
-const COUNT_LIMIT = 10;
+const COUNT_LIMIT = 30;
 
 @Injectable({
   providedIn: 'root',

@@ -2,10 +2,10 @@ import { createReducer, on } from '@ngrx/store';
 import * as CardActions from '@store/actions/card.actions';
 import { CustomCardsState } from '../state.model';
 
-export const cardFeatureKey = 'cards';
+export const cardFeatureKey = 'card';
 
 const initialState: CustomCardsState = {
-  customCardsState: [],
+  items: [],
 };
 
 export const CardReducer = createReducer(
@@ -14,14 +14,14 @@ export const CardReducer = createReducer(
     CardActions.addCard,
     (state, { payload }): CustomCardsState => ({
       ...state,
-      customCardsState: [...state.customCardsState, payload],
+      items: [...state.items, payload],
     })
   ),
   on(
     CardActions.deleteCard,
     (state, { id }): CustomCardsState => ({
       ...state,
-      customCardsState: state.customCardsState.filter(card => card.id !== id),
+      items: state.items.filter(card => card.id !== id),
     })
   )
 );
