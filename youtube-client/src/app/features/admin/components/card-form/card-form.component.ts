@@ -16,6 +16,12 @@ import { getDateValidator } from '@features/youtube/utils/date.validator';
 import { ErrorComponent } from '@shared/components/error/error.component';
 import { CUSTOM_ERRORS } from '@shared/tokens/custom-error.token';
 import { errors } from '@shared/constants/built-in-errors.constant';
+import { Store } from '@ngrx/store';
+
+import * as CardActions from '@store/actions/card.actions';
+import { CustomCard } from '@store/state.model';
+import { MatNativeDateModule } from '@angular/material/core';
+import { generateRandomString } from '@features/youtube/utils/random-string';
 
 @Component({
   selector: 'app-card-form',
@@ -28,6 +34,7 @@ import { errors } from '@shared/constants/built-in-errors.constant';
     ReactiveFormsModule,
     MatInputModule,
     MatDatepickerModule,
+    MatNativeDateModule,
     IconComponent,
     ButtonComponent,
     NgIf,
@@ -50,7 +57,7 @@ export class CardFormComponent {
       [Validators.required, Validators.minLength(3), Validators.maxLength(20)],
     ],
     description: ['', [Validators.maxLength(255)]],
-    imageUrl: ['', [Validators.required]],
+    imageLink: ['', [Validators.required]],
     videoLink: ['', [Validators.required]],
     creationDate: [
       '',
@@ -61,11 +68,24 @@ export class CardFormComponent {
 
   public isShowIconCreate = true;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private store: Store
+  ) {}
 
   createCard() {
     if (!this.createCardForm.valid) return;
-    console.warn('Create Card');
+
+    const id = generateRandomString();
+
+    this.store.dispatch(
+      CardActions.addCard({
+        payload: {
+          ...(this.createCardForm.value as CustomCard),
+          id,
+        },
+      })
+    );
   }
 
   get tags(): FormArray {

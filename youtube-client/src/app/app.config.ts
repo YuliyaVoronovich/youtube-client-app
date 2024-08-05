@@ -1,6 +1,12 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import {
+  ApplicationConfig,
+  isDevMode,
+  provideZoneChangeDetection,
+} from '@angular/core';
+
 import { provideRouter } from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 import {
   HTTP_INTERCEPTORS,
@@ -8,7 +14,9 @@ import {
   withInterceptorsFromDi,
 } from '@angular/common/http';
 import { AccessTokenInterceptor } from '@features/youtube/interceptors/access-token.interceptor';
+import { provideState, provideStore } from '@ngrx/store';
 import { routes } from './app.routes';
+import { cardFeatureKey, CardReducer } from './store/reducers/card.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -21,5 +29,11 @@ export const appConfig: ApplicationConfig = {
       useClass: AccessTokenInterceptor,
       multi: true,
     },
+    provideStore(),
+    provideState({ name: cardFeatureKey, reducer: CardReducer }),
+    provideStoreDevtools({
+      maxAge: 25,
+      logOnly: !isDevMode(),
+    }),
   ],
 };
