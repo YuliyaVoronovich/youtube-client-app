@@ -36,5 +36,20 @@ export const YoutubeReducer = createReducer(
       ...state,
       stateError,
     })
+  ),
+  on(
+    YoutubeAction.setCurrentPage,
+    (state, { page }): YoutubeState => ({
+      ...state,
+      currentPage: page,
+    })
+  ),
+  on(
+    YoutubeAction.setTokens,
+    (state, { nextPageToken, prevPageToken }): YoutubeState => ({
+      ...state,
+      nextPageToken,
+      prevPageToken,
+    })
   )
 );

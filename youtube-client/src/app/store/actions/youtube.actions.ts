@@ -5,6 +5,9 @@ enum YouTubePage {
   Error = '[Youtube Api] Set error',
   Success = '[Youtube Api] Set response',
   Query = '[Youtube Api] Change query',
+  SetCurrentPage = '[Youtube Api] Set current page',
+  SaveTokens = '[Youtube Api] Save page tokens',
+  SwitchPage = '[Youtube Api] Switch Page',
 }
 
 export const getVideosSuccess = createAction(
@@ -18,4 +21,17 @@ export const changeQuery = createAction(
 export const setError = createAction(
   YouTubePage.Error,
   props<{ stateError: string }>()
+);
+export const setCurrentPage = createAction(
+  YouTubePage.SetCurrentPage,
+  props<{ page: number }>()
+);
+export const switchPage = createAction(
+  YouTubePage.SwitchPage,
+  props<{ searchQuery: string; pageToken?: string }>()
+);
+
+export const setTokens = createAction(
+  YouTubePage.SaveTokens,
+  props<{ nextPageToken: string; prevPageToken: string }>()
 );

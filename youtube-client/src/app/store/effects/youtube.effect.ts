@@ -22,4 +22,18 @@ export class YoutubeEffects {
       )
     );
   });
+
+  private switchPage$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(YoutubeAction.switchPage),
+      switchMap(action =>
+        this.youtubeApiService
+          .getVideos(action.searchQuery, action.pageToken)
+          .pipe(
+            map(items => YoutubeAction.getVideosSuccess({ items })),
+            catchError(stateError => of(YoutubeAction.setError({ stateError })))
+          )
+      )
+    );
+  });
 }

@@ -12,3 +12,8 @@ export const selectCurrentPage = createSelector(
   selectYoutubeFeature,
   (state: YoutubeState) => state.currentPage
 );
+
+export const selectSnapshot = createSelector(
+  selectYoutubeFeature,
+  (state: YoutubeState) => state
+);
