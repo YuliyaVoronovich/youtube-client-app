@@ -10,5 +10,10 @@
   <mat-card-content class="card-content">
     <div class="desc-text">{{ card.description }}</div>
   </mat-card-content>
-  <mat-card-footer> </mat-card-footer>
+  <mat-card-footer>
+    <app-button
+      (click)="deleteCard(card.id)"
+      colorButton="accent"
+      text="Delete"></app-button>
+  </mat-card-footer>
 </mat-card>

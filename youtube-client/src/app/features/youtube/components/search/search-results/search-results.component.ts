@@ -1,6 +1,6 @@
 /* eslint-disable class-methods-use-this */
-import { Component, Input, OnInit } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { map, Observable, Subscription } from 'rxjs';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { FilterPipe } from '@features/youtube/pipes/filter.pipe';
@@ -36,7 +36,7 @@ import { CustomCardComponent } from '../../custom-card/custom-card.component';
   templateUrl: './search-results.component.html',
   styleUrl: './search-results.component.scss',
 })
-export class SearchResultsComponent implements OnInit {
+export class SearchResultsComponent implements OnInit, OnDestroy {
   public readonly videos$ = this.store.select(
     CardSelectors.selectVideosFirstPage
   );
@@ -58,6 +58,8 @@ export class SearchResultsComponent implements OnInit {
 
   public searchQuery = '';
 
+  private tokenSubscription!: Subscription;
+
   constructor(
     private searchService: SearchService,
     private store: Store
@@ -65,12 +67,16 @@ export class SearchResultsComponent implements OnInit {
 
   ngOnInit(): void {
     const pageTokens$ = this.store.select(YoutubeSelectors.selectSnapshot);
-    pageTokens$.subscribe(tokens => {
+    this.tokenSubscription = pageTokens$.subscribe(tokens => {
       this.prevPageToken = tokens.prevPageToken;
       this.nextPageToken = tokens.nextPageToken;
       this.currentPage = tokens.currentPage;
       this.searchQuery = tokens.searchQuery;
     });
+  }
+
+  ngOnDestroy() {
+    this.tokenSubscription.unsubscribe();
   }
 
   isCustomCard(item: Video | CustomCard): item is CustomCard {
