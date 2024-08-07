@@ -22,4 +22,5 @@ export interface YoutubeState {
   currentPage: number;
   searchQuery: string;
   stateError: string;
+  favorites: Video[];
 }

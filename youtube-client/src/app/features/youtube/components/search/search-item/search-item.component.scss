@@ -1,5 +1,24 @@
 :host {
   border-radius: '0 0 10px 10px';
+
+  ::ng-deep .favorite-btn .mat-icon {
+    cursor: pointer;
+    color: #d0bfbd;
+    transition: 0.5s;
+
+    &:hover {
+      color: #ba005c;
+    }
+  }
+
+  ::ng-deep .favorite-btn.favorite .mat-icon {
+    color: #ba005c;
+  }
+
+  ::ng-deep .mat-mdc-extended-fab {
+    width: 100%;
+    font-size: 1rem;
+  }
 }
 
 .card {
@@ -79,9 +98,4 @@ mat-card-title {
 
 app-button {
   width: 100%;
-}
-
-:host ::ng-deep .mat-mdc-extended-fab {
-  width: 100%;
-  font-size: 1rem;
 }

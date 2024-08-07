@@ -4,13 +4,14 @@ import { YoutubeState } from '@store/state.model';
 
 export const yotubeFeatureKey = 'youtube';
 
-const initialState: YoutubeState = {
+export const initialState: YoutubeState = {
   items: [],
   searchQuery: '',
   currentPage: 1,
   nextPageToken: '',
   prevPageToken: '',
   stateError: '',
+  favorites: [],
 };
 
 export const YoutubeReducer = createReducer(
@@ -50,6 +51,20 @@ export const YoutubeReducer = createReducer(
       ...state,
       nextPageToken,
       prevPageToken,
+    })
+  ),
+  on(
+    YoutubeAction.addToFavorites,
+    (state, { video }): YoutubeState => ({
+      ...state,
+      favorites: [...state.favorites, video],
+    })
+  ),
+  on(
+    YoutubeAction.removeFromFavorites,
+    (state, { video }): YoutubeState => ({
+      ...state,
+      favorites: state.favorites.filter(favorites => favorites !== video),
     })
   )
 );

@@ -17,3 +17,8 @@ export const selectSnapshot = createSelector(
   selectYoutubeFeature,
   (state: YoutubeState) => state
 );
+
+export const selectFavoriteVideos = createSelector(
+  selectYoutubeFeature,
+  (state: YoutubeState) => state.favorites
+);

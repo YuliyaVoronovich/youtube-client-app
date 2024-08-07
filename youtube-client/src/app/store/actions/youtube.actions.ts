@@ -8,6 +8,9 @@ enum YouTubePage {
   SetCurrentPage = '[Youtube Api] Set current page',
   SaveTokens = '[Youtube Api] Save page tokens',
   SwitchPage = '[Youtube Api] Switch Page',
+  Add_favorites = '[Favorites Video] Add favorites video',
+  Remove_favorites = '[Favorites Video] Remove favorites video',
+  Check_video = '[Favorites Video] Check favorites video',
 }
 
 export const getVideosSuccess = createAction(
@@ -34,4 +37,13 @@ export const switchPage = createAction(
 export const setTokens = createAction(
   YouTubePage.SaveTokens,
   props<{ nextPageToken: string; prevPageToken: string }>()
+);
+export const addToFavorites = createAction(
+  YouTubePage.Add_favorites,
+  props<{ video: Video }>()
+);
+
+export const removeFromFavorites = createAction(
+  YouTubePage.Remove_favorites,
+  props<{ video: Video }>()
 );

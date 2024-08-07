@@ -41,6 +41,10 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
     CardSelectors.selectVideosFirstPage
   );
 
+  private favoritesVideos$ = this.store.select(
+    YoutubeSelectors.selectFavoriteVideos
+  );
+
   @Input({ required: true }) filterValue!: string;
 
   @Input({ required: true }) sortType!: SortFieldType;
@@ -57,6 +61,8 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
   public currentPage!: number;
 
   public searchQuery = '';
+
+  private favoritesSubscription!: Subscription;
 
   private tokenSubscription!: Subscription;
 
@@ -77,6 +83,10 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.tokenSubscription.unsubscribe();
+
+    if (this.favoritesSubscription) {
+      this.favoritesSubscription.unsubscribe();
+    }
   }
 
   isCustomCard(item: Video | CustomCard): item is CustomCard {
@@ -99,6 +109,22 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
           pageToken,
         })
       );
+    }
+  }
+
+  isFavorite(video: Video): boolean {
+    let isFavorite = false;
+    this.favoritesSubscription = this.favoritesVideos$.subscribe(favorites => {
+      isFavorite = favorites.includes(video);
+    });
+    return isFavorite;
+  }
+
+  toggleFavorite(video: Video): void {
+    if (this.isFavorite(video)) {
+      this.store.dispatch(YoutubeAction.removeFromFavorites({ video }));
+    } else {
+      this.store.dispatch(YoutubeAction.addToFavorites({ video }));
     }
   }
 }

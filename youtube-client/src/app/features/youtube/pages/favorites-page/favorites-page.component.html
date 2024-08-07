@@ -1,0 +1,6 @@
+<ng-container *ngFor="let video of favoritesVideos$ | async">
+  <app-search-item
+    [video]="video"
+    [isFavorite]="isFavorite(video)"
+    (videoEmit)="toggleFavorite(video)"></app-search-item>
+</ng-container>
