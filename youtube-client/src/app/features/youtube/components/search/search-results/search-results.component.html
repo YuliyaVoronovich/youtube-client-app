@@ -1,10 +1,7 @@
 <div class="search-results" *ngIf="videosLength$">
   <div
     *ngFor="
-      let video of videos$
-        | async
-        | filter: filterValue
-        | sort: sortType : orderType
+      let video of videos() | filter: filterValue | sort: sortType : orderType
     ">
     <app-search-item [video]="video"></app-search-item>
   </div>
