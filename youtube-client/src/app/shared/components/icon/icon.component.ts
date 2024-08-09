@@ -11,5 +11,5 @@ import { MatIconModule } from '@angular/material/icon';
 export class IconComponent {
   @Input() fontIcon: string = '';
 
-  @Input() text: string = '';
+  @Input() text: string | undefined = '';
 }
