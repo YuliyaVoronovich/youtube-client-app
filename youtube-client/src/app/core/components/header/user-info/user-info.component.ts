@@ -4,7 +4,6 @@ import { AuthService } from '@features/auth/services/auth.service';
 import { IconComponent } from '@shared/components/icon/icon.component';
 import { Router } from '@angular/router';
 import { CommonModule, NgIf } from '@angular/common';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-user-info',
@@ -14,7 +13,7 @@ import { Observable } from 'rxjs';
   styleUrl: './user-info.component.scss',
 })
 export class UserInfoComponent {
-  public isLoggedIn$: Observable<boolean> = this.authService.isLoginned$;
+  public isLoggedIn = this.authService.isLoggedIn();
 
   constructor(
     private authService: AuthService,
