@@ -17,6 +17,7 @@ import * as YoutubeAction from '@store/actions/youtube.actions';
 import { VideoType } from '@features/youtube/models/type-video.model';
 import { Video } from '@features/youtube/models/search-item.model';
 import { CustomCard } from '@store/state.model';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { SearchItemComponent } from '../search-item/search-item.component';
 import { CustomCardComponent } from '../../custom-card/custom-card.component';
 
@@ -37,12 +38,18 @@ import { CustomCardComponent } from '../../custom-card/custom-card.component';
   styleUrl: './search-results.component.scss',
 })
 export class SearchResultsComponent implements OnInit, OnDestroy {
-  public readonly videos$ = this.store.select(
-    CardSelectors.selectVideosFirstPage
+  public readonly videos = toSignal(
+    this.store.select(CardSelectors.selectVideosFirstPage),
+    {
+      initialValue: [],
+    }
   );
 
-  private favoritesVideos$ = this.store.select(
-    YoutubeSelectors.selectFavoriteVideos
+  private favoritesVideos = toSignal(
+    this.store.select(YoutubeSelectors.selectFavoriteVideos),
+    {
+      initialValue: [],
+    }
   );
 
   @Input({ required: true }) filterValue!: string;
@@ -61,8 +68,6 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
   public currentPage!: number;
 
   public searchQuery = '';
-
-  private favoritesSubscription!: Subscription;
 
   private tokenSubscription!: Subscription;
 
@@ -83,10 +88,6 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.tokenSubscription.unsubscribe();
-
-    if (this.favoritesSubscription) {
-      this.favoritesSubscription.unsubscribe();
-    }
   }
 
   isCustomCard(item: Video | CustomCard): item is CustomCard {
@@ -113,11 +114,7 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
   }
 
   isFavorite(video: Video): boolean {
-    let isFavorite = false;
-    this.favoritesSubscription = this.favoritesVideos$.subscribe(favorites => {
-      isFavorite = favorites.includes(video);
-    });
-    return isFavorite;
+    return this.favoritesVideos().includes(video);
   }
 
   toggleFavorite(video: Video): void {
