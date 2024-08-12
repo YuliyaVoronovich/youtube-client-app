@@ -6,7 +6,6 @@ import { MatInputModule } from '@angular/material/input';
 import { NavigationEnd, Router } from '@angular/router';
 import { Routes } from '@core/models/route.model';
 import { FilterService } from '@features/youtube/services/filter.service';
-import { SearchService } from '@features/youtube/services/search.service';
 import { Store } from '@ngrx/store';
 import { ButtonComponent } from '@shared/components/button/button.component';
 import { debounceTime, distinctUntilChanged, filter, Subscription } from 'rxjs';
@@ -35,11 +34,10 @@ export class SearchFormComponent implements OnInit, OnDestroy {
 
   private searchSubscription!: Subscription;
 
-  protected searchText = new FormControl('', { nonNullable: true });
+  public searchText = new FormControl('', { nonNullable: true });
 
   constructor(
     private filterService: FilterService,
-    private searchService: SearchService,
     private router: Router,
     private store: Store
   ) {}
@@ -63,13 +61,22 @@ export class SearchFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.routerSubscription.unsubscribe();
-    this.searchSubscription.unsubscribe();
+    if (this.routerSubscription) {
+      this.routerSubscription.unsubscribe();
+    }
+    if (this.searchSubscription) {
+      this.searchSubscription.unsubscribe();
+    }
   }
 
-  isShowButtonSettings() {
+  getCurrentUrl(): string {
+    return this.currentUrl;
+  }
+
+  isShowButtonSettings(): boolean {
     return (
-      this.currentUrl === Routes.Default || this.currentUrl === Routes.Main
+      this.getCurrentUrl() === Routes.Main ||
+      this.getCurrentUrl() === Routes.Default
     );
   }
 

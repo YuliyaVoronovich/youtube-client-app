@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed } from '@angular/core';
 import { Routes } from '@core/models/route.model';
 import { AuthService } from '@features/auth/services/auth.service';
 import { IconComponent } from '@shared/components/icon/icon.component';
@@ -13,7 +13,7 @@ import { CommonModule, NgIf } from '@angular/common';
   styleUrl: './user-info.component.scss',
 })
 export class UserInfoComponent {
-  public isLoggedIn = this.authService.isLoggedIn();
+  public isLoggedIn = computed(() => this.authService.isLoggedIn());
 
   constructor(
     private authService: AuthService,

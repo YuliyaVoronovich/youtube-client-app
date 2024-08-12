@@ -1,5 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideRouter } from '@angular/router';
+import { provideMockStore } from '@ngrx/store/testing';
 import { AdminPageComponent } from './admin-page.component';
 
 describe('AdminPageComponent', () => {
@@ -9,6 +12,7 @@ describe('AdminPageComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AdminPageComponent],
+      providers: [provideMockStore({}), provideRouter([]), provideAnimations()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(AdminPageComponent);
