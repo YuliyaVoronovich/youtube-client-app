@@ -16,6 +16,7 @@ export class BorderBottomDirective implements OnInit {
   ) {}
 
   ngOnInit() {
+    console.warn('ngOnInit called');
     this.setBorderColor();
   }
 

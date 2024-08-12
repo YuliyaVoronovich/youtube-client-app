@@ -12,13 +12,6 @@ import { of } from 'rxjs';
 import { Video } from '@features/youtube/models/search-item.model';
 import { SearchResultsComponent } from './search-results.component';
 
-jest.mock('src/environments/environment', () => ({
-  environment: {
-    BASE_API_URL: 'https://mock-api-url.com',
-    YOUTUBE_API_KEY: 'mock-youtube-api-key',
-  },
-}));
-
 const storeMock = {
   dispatch: jest.fn(),
   select: jest.fn().mockImplementation(selector => {

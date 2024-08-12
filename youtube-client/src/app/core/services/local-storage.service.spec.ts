@@ -21,6 +21,11 @@ describe('LocalStorageService', () => {
       ],
     });
     service = TestBed.inject(LocalStorageService);
+    jest.clearAllMocks();
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
   it('should be created', () => {
@@ -32,6 +37,7 @@ describe('LocalStorageService', () => {
     const value = 'testValue';
 
     jest.spyOn(localStorageMock, 'getItem').mockReturnValue(value);
+
     const result = service.getItem(key);
     expect(localStorageMock.getItem).toHaveBeenCalledWith(key);
     expect(result).toBe(value);
