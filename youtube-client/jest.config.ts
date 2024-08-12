@@ -18,6 +18,7 @@ const config: Config = {
     '^@features/(.*)$': '<rootDir>/src/app/features/$1',
     '^@shared/(.*)$': '<rootDir>/src/app/shared/$1',
     '^@store/(.*)$': '<rootDir>/src/app/store/$1',
+    '^src/environments/(.*)$': '<rootDir>/src/environments/$1',
   },
 };
 
