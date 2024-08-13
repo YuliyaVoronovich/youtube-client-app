@@ -9,7 +9,7 @@ import * as YoutubeAction from '@store/actions/youtube.actions';
 import * as CardSelectors from '@store/selectors/card.selector';
 import { PageEvent } from '@angular/material/paginator';
 import { of } from 'rxjs';
-import { Video } from '@features/youtube/models/search-item.model';
+import { mockVideo } from '@store/state.model.mock';
 import { SearchResultsComponent } from './search-results.component';
 
 const storeMock = {
@@ -29,21 +29,6 @@ const mockPageEvent: PageEvent = {
   pageSize: 20,
   length: 100,
 };
-
-const mockVideo: Video = {
-  id: {
-    videoId: 'mockVideoId',
-  },
-  snippet: {
-    title: 'Mock Video Title',
-    description: 'Mock Video Description',
-    thumbnails: {
-      default: {
-        url: 'https://test.com/test.jpg',
-      },
-    },
-  },
-} as Video;
 
 describe('FilterComponent', () => {
   let component: SearchResultsComponent;

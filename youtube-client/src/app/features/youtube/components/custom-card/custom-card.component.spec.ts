@@ -3,10 +3,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 import { provideMockStore } from '@ngrx/store/testing';
-import { CustomCard } from '@store/state.model';
 import { By } from '@angular/platform-browser';
 import * as CardActions from '@store/actions/card.actions';
 import { Store } from '@ngrx/store';
+import { mockCard } from '@store/state.model.mock';
 import { CustomCardComponent } from './custom-card.component';
 
 describe('CustomCardComponent', () => {
@@ -16,16 +16,6 @@ describe('CustomCardComponent', () => {
   const storeMock = {
     dispatch: jest.fn(),
   };
-
-  const mockCard = {
-    id: '1',
-    imageLink: 'https://test.com/test.png',
-    title: 'Test Card',
-    description: 'This is a test description',
-    videoLink: 'https://test.com/test.mp3',
-    creationDate: '2024',
-    type: 'card',
-  } as CustomCard;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
