@@ -4,7 +4,7 @@ import { CustomCardsState } from '../state.model';
 
 export const cardFeatureKey = 'card';
 
-const initialState: CustomCardsState = {
+export const initialState: CustomCardsState = {
   items: [],
 };
 

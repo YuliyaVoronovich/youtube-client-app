@@ -25,7 +25,10 @@ export class FavoritesPageComponent {
   constructor(private store: Store) {}
 
   isFavorite(video: Video): boolean {
-    return this.favoritesVideos().includes(video);
+    const favorites = this.favoritesVideos();
+    return (
+      Array.isArray(favorites) && favorites.some(fav => fav.id === video.id)
+    );
   }
 
   toggleFavorite(video: Video): void {
