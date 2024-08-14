@@ -1,5 +1,16 @@
 <mat-toolbar-row>
   <app-logo></app-logo>
+  <div class="menu">
+    <app-button
+      colorButton="accent"
+      text="Admin"
+      [routerLink]="['/admin']"></app-button>
+    <app-button
+      colorButton="accent"
+      text="Favorites"
+      [routerLink]="['/favorites']"></app-button>
+  </div>
+
   <app-search-form></app-search-form>
   <app-user-info></app-user-info>
 </mat-toolbar-row>

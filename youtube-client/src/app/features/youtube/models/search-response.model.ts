@@ -4,6 +4,8 @@ export interface SearchResponse {
   kind: string;
   etag: string;
   pageInfo: PageInfo;
+  nextPageToken: string;
+  prevPageToken: string;
   items: Video[];
 }
 

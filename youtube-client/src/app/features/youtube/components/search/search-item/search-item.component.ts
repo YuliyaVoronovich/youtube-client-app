@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { BorderBottomDirective } from '@features/youtube/directives/border-bottom.directive';
 import { Video } from '@features/youtube/models/search-item.model';
@@ -20,10 +20,18 @@ import { IconComponent } from '@shared/components/icon/icon.component';
 export class SearchItemComponent {
   @Input({ required: true }) video!: Video;
 
+  @Input() isFavorite: boolean = false;
+
+  @Output() videoEmit = new EventEmitter<Video>();
+
   get videoId(): string {
     if (typeof this.video.id === 'object') {
       return this.video.id.videoId;
     }
     return this.video.id;
+  }
+
+  toggleFavorite(video: Video) {
+    this.videoEmit.emit(video);
   }
 }

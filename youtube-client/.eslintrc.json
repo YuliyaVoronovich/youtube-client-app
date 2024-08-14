@@ -42,7 +42,12 @@
           }
         ],
         "import/prefer-default-export": "off",
-        "no-console": ["error", { "allow": ["warn", "error"] }]
+        "no-console": [
+          "error",
+          {
+            "allow": ["warn", "error"]
+          }
+        ]
       }
     },
     {
@@ -52,8 +57,17 @@
         "plugin:@angular-eslint/template/accessibility"
       ],
       "rules": {
-        "prettier/prettier": ["error", { "parser": "angular" }]
+        "prettier/prettier": [
+          "error",
+          {
+            "parser": "angular"
+          }
+        ]
       }
+    },
+    {
+      "files": ["*.ts"],
+      "extends": ["plugin:@ngrx/all"]
     }
   ]
 }

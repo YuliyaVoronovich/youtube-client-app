@@ -1,24 +1,5 @@
 :host {
   border-radius: '0 0 10px 10px';
-
-  ::ng-deep .favorite-btn .mat-icon {
-    cursor: pointer;
-    color: #d0bfbd;
-    transition: 0.5s;
-
-    &:hover {
-      color: #ba005c;
-    }
-  }
-
-  ::ng-deep .favorite-btn.favorite .mat-icon {
-    color: #ba005c;
-  }
-
-  ::ng-deep .mat-mdc-extended-fab {
-    width: 100%;
-    font-size: 1rem;
-  }
 }
 
 .card {
@@ -58,26 +39,6 @@ mat-card-actions {
   object-fit: cover;
 }
 
-.statistics-icon {
-  display: flex;
-  gap: 5px;
-  align-items: center;
-  justify-content: center;
-
-  margin: 0;
-  margin-top: 5px;
-  padding: 0;
-
-  font-size: 0.75rem;
-  list-style-type: none;
-}
-
-.statistics-icon app-icon {
-  display: flex;
-  align-items: center;
-  font-size: 0.75rem;
-}
-
 mat-card-content,
 mat-card-title {
   padding: 8px 16px;
@@ -98,4 +59,9 @@ mat-card-title {
 
 app-button {
   width: 100%;
+}
+
+:host ::ng-deep .mat-mdc-extended-fab {
+  width: 100%;
+  font-size: 1rem;
 }

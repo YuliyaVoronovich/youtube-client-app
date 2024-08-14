@@ -21,6 +21,14 @@ export const routes: Routes = [
     canMatch: [authGuard],
   },
   {
+    path: 'favorites',
+    loadComponent: () =>
+      import(
+        '@features/youtube/pages/favorites-page/favorites-page.component'
+      ).then(m => m.FavoritesPageComponent),
+    canMatch: [authGuard],
+  },
+  {
     path: 'login',
     loadComponent: () =>
       import('@features/auth/pages/login-page/login-page.component').then(

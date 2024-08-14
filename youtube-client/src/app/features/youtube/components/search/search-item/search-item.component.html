@@ -3,6 +3,12 @@
   appearance="outlined"
   appBorderBottom
   [publishTime]="video.snippet.publishedAt">
+  <app-icon
+    fontIcon="favorite"
+    [class.favorite]="isFavorite"
+    class="favorite-btn"
+    (click)="toggleFavorite(video)">
+  </app-icon>
   <mat-card-header>
     <div class="image">
       <img

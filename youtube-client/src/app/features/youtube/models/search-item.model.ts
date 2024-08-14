@@ -1,3 +1,5 @@
+import { VideoType } from './type-video.model';
+
 export interface Video {
   kind: string;
   etag: string;
@@ -6,6 +8,7 @@ export interface Video {
   };
   snippet: Snippet;
   statistics: Statistics;
+  type: VideoType.Video;
 }
 
 export interface Snippet {
