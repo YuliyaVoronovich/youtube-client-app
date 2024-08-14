@@ -1,6 +1,5 @@
 import { Injectable, signal } from '@angular/core';
 import { LocalStorageService } from '@core/services/local-storage.service';
-import { BehaviorSubject } from 'rxjs';
 
 const KEY_USER_TOKEN = 'fakeUserToken';
 
@@ -8,8 +7,6 @@ const KEY_USER_TOKEN = 'fakeUserToken';
   providedIn: 'root',
 })
 export class AuthService {
-  private readonly isLoginned$$ = new BehaviorSubject(this.getAuthStatus());
-
   public isLoggedIn = signal(this.getAuthStatus());
 
   constructor(private localStorage: LocalStorageService) {}

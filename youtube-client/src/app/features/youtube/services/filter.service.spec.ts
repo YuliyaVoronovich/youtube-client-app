@@ -13,4 +13,14 @@ describe('FilterServiceService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should toggle showFilters value', () => {
+    expect(service.isShowFilters()).toBe(false);
+
+    service.toggleShowFilter();
+    expect(service.isShowFilters()).toBe(true);
+
+    service.toggleShowFilter();
+    expect(service.isShowFilters()).toBe(false);
+  });
 });

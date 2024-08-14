@@ -1,7 +1,8 @@
 import { Video } from '@features/youtube/models/search-item.model';
 import { createAction, props } from '@ngrx/store';
 
-enum YouTubePage {
+
+export enum YouTubePage {
   Error = '[Youtube Api] Set error',
   Success = '[Youtube Api] Set response',
   Query = '[Youtube Api] Change query',

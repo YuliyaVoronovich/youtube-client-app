@@ -17,7 +17,6 @@ import * as YoutubeAction from '@store/actions/youtube.actions';
 import { VideoType } from '@features/youtube/models/type-video.model';
 import { Video } from '@features/youtube/models/search-item.model';
 import { CustomCard } from '@store/state.model';
-
 import { toSignal } from '@angular/core/rxjs-interop';
 import { SearchItemComponent } from '../search-item/search-item.component';
 import { CustomCardComponent } from '../../custom-card/custom-card.component';
@@ -39,7 +38,6 @@ import { CustomCardComponent } from '../../custom-card/custom-card.component';
   styleUrl: './search-results.component.scss',
 })
 export class SearchResultsComponent implements OnInit, OnDestroy {
-
   public readonly videos = toSignal(
     this.store.select(CardSelectors.selectVideosFirstPage),
     {
@@ -52,7 +50,6 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
     {
       initialValue: [],
     }
-
   );
 
   @Input({ required: true }) filterValue!: string;
@@ -91,11 +88,6 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.tokenSubscription.unsubscribe();
-
-
-    if (this.favoritesSubscription) {
-      this.favoritesSubscription.unsubscribe();
-    }
   }
 
   isCustomCard(item: Video | CustomCard): item is CustomCard {
@@ -123,6 +115,7 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
 
   isFavorite(video: Video): boolean {
     return this.favoritesVideos().includes(video);
+  }
 
 
   toggleFavorite(video: Video): void {

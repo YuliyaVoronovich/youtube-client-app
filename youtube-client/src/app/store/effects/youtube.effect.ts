@@ -11,7 +11,7 @@ export class YoutubeEffects {
     private readonly actions$: Actions
   ) {}
 
-  private searchResults$ = createEffect(() => {
+  searchResults$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(YoutubeAction.changeQuery),
       switchMap(action =>
@@ -23,7 +23,7 @@ export class YoutubeEffects {
     );
   });
 
-  private switchPage$ = createEffect(() => {
+  switchPage$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(YoutubeAction.switchPage),
       switchMap(action =>
