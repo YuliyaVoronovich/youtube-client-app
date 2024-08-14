@@ -1,11 +1,14 @@
-import { Component, OnDestroy } from '@angular/core';
+
+import { Component } from '@angular/core';
+
 import { SearchItemComponent } from '@features/youtube/components/search/search-item/search-item.component';
 import { Store } from '@ngrx/store';
 import * as YoutubeSelectors from '@store/selectors/youtube.selector';
 import * as YoutubeAction from '@store/actions/youtube.actions';
 import { Video } from '@features/youtube/models/search-item.model';
 import { CommonModule, NgFor } from '@angular/common';
-import { Subscription } from 'rxjs';
+import { toSignal } from '@angular/core/rxjs-interop';
+
 
 @Component({
   selector: 'app-favorites-page',
@@ -14,27 +17,19 @@ import { Subscription } from 'rxjs';
   templateUrl: './favorites-page.component.html',
   styleUrl: './favorites-page.component.scss',
 })
-export class FavoritesPageComponent implements OnDestroy {
-  public favoritesVideos$ = this.store.select(
-    YoutubeSelectors.selectFavoriteVideos
-  );
 
-  private favoritesSubscription!: Subscription;
+export class FavoritesPageComponent {
+  public favoritesVideos = toSignal(
+    this.store.select(YoutubeSelectors.selectFavoriteVideos),
+    {
+      initialValue: [],
+    }
+  );
 
   constructor(private store: Store) {}
 
-  ngOnDestroy() {
-    if (this.favoritesSubscription) {
-      this.favoritesSubscription.unsubscribe();
-    }
-  }
-
   isFavorite(video: Video): boolean {
-    let isFavorite = false;
-    this.favoritesSubscription = this.favoritesVideos$.subscribe(favorites => {
-      isFavorite = favorites.includes(video);
-    });
-    return isFavorite;
+    return this.favoritesVideos().includes(video);
   }
 
   toggleFavorite(video: Video): void {

@@ -1,15 +1,16 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Injectable, signal, WritableSignal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FilterService {
-  private showFilters$$ = new BehaviorSubject<boolean>(false);
+  private showFilters = signal(false);
 
-  public showFilters$: Observable<boolean> = this.showFilters$$;
+  get isShowFilters(): WritableSignal<boolean> {
+    return this.showFilters;
+  }
 
   toggleShowFilter(): void {
-    this.showFilters$$.next(!this.showFilters$$.value);
+    this.showFilters.update(value => !value);
   }
 }

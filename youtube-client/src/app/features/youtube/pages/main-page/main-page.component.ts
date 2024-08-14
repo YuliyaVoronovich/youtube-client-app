@@ -1,7 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgIf } from '@angular/common';
 
-import { Subscription } from 'rxjs';
 import {
   SortFieldType,
   SortingField,
@@ -18,29 +17,17 @@ import { FilterService } from '../../services/filter.service';
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.scss',
 })
-export class MainPageComponent implements OnInit, OnDestroy {
-  public showFilters = false;
-
+export class MainPageComponent {
   public inputValue: string = '';
 
   public sortType = SortFieldType.Date;
 
   public orderType = SortOrderType.Desc;
 
-  private subscription!: Subscription;
-
   constructor(private filterService: FilterService) {}
 
-  ngOnInit() {
-    this.subscription = this.filterService.showFilters$.subscribe(
-      showFilters => {
-        this.showFilters = showFilters;
-      }
-    );
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
+  get showFilters(): boolean {
+    return this.filterService.isShowFilters();
   }
 
   onFilterChange(value: string) {

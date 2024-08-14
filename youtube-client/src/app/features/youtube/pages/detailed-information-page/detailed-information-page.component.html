@@ -3,7 +3,7 @@
   fontIcon="arrow_back"
   [routerLink]="['/']"></app-icon>
 <mat-card
-  *ngIf="video"
+  *ngIf="video() as video"
   class="card"
   appCardShadowColor
   [publishTime]="video.snippet.publishedAt">

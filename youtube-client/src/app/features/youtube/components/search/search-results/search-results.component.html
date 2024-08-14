@@ -1,5 +1,6 @@
 <div class="search-results" *ngIf="videosLength$">
-  <ng-container *ngFor="let item of videos$ | async">
+  <ng-container *ngFor="let item of videos()">
+
     <app-custom-card *ngIf="isCustomCard(item)" [card]="item"></app-custom-card>
     <ng-container *ngIf="!isCustomCard(item)">
       <app-search-item
