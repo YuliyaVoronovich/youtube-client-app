@@ -7,6 +7,7 @@ import { By } from '@angular/platform-browser';
 import * as CardActions from '@store/actions/card.actions';
 import { Store } from '@ngrx/store';
 import { mockCard } from '@store/state.model.mock';
+
 import { CustomCardComponent } from './custom-card.component';
 
 describe('CustomCardComponent', () => {
@@ -26,11 +27,13 @@ describe('CustomCardComponent', () => {
         provideAnimations(),
         { provide: Store, useValue: storeMock },
       ],
+
     }).compileComponents();
 
     fixture = TestBed.createComponent(CustomCardComponent);
     component = fixture.componentInstance;
     component.card = mockCard;
+
     fixture.detectChanges();
   });
 
@@ -60,4 +63,5 @@ describe('CustomCardComponent', () => {
       CardActions.deleteCard({ id: mockCard.id })
     );
   });
+
 });

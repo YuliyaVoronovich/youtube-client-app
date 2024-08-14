@@ -14,6 +14,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
   templateUrl: './favorites-page.component.html',
   styleUrl: './favorites-page.component.scss',
 })
+
 export class FavoritesPageComponent {
   public favoritesVideos = toSignal(
     this.store.select(YoutubeSelectors.selectFavoriteVideos),
@@ -29,6 +30,7 @@ export class FavoritesPageComponent {
     return (
       Array.isArray(favorites) && favorites.some(fav => fav.id === video.id)
     );
+
   }
 
   toggleFavorite(video: Video): void {

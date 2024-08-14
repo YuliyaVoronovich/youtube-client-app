@@ -13,7 +13,9 @@ import { CommonModule, NgIf } from '@angular/common';
   styleUrl: './user-info.component.scss',
 })
 export class UserInfoComponent {
+
   public isLoggedIn = computed(() => this.authService.isLoggedIn());
+
 
   constructor(
     private authService: AuthService,

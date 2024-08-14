@@ -38,6 +38,7 @@ export class SearchFormComponent implements OnInit, OnDestroy {
 
   constructor(
     private filterService: FilterService,
+
     private router: Router,
     private store: Store
   ) {}
@@ -71,6 +72,7 @@ export class SearchFormComponent implements OnInit, OnDestroy {
 
   getCurrentUrl(): string {
     return this.currentUrl;
+
   }
 
   isShowButtonSettings(): boolean {

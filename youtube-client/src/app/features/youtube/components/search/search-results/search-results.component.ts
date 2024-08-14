@@ -117,6 +117,7 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
     return this.favoritesVideos().includes(video);
   }
 
+
   toggleFavorite(video: Video): void {
     if (this.isFavorite(video)) {
       this.store.dispatch(YoutubeAction.removeFromFavorites({ video }));

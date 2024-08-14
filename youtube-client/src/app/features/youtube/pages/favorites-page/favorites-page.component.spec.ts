@@ -11,6 +11,7 @@ import { FavoritesPageComponent } from './favorites-page.component';
 describe('FavoritesPageComponent', () => {
   let component: FavoritesPageComponent;
   let fixture: ComponentFixture<FavoritesPageComponent>;
+
   let store: MockStore;
 
   const mockFavoriteVideos: Video[] = [
@@ -78,4 +79,5 @@ describe('FavoritesPageComponent', () => {
     const video: Video = mockFavoriteVideos[0];
     expect(component.isFavorite(video)).toBeTruthy();
   });
+
 });
